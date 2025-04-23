@@ -1,0 +1,26 @@
+\begin{tikzpicture}[node distance=1.5cm]
+
+\tikzstyle{inputnode} = [rectangle, draw, fill=blue!5, text centered, minimum width=4cm, minimum height=1cm, align=center, inner sep=6pt]
+\tikzstyle{featurenode} = [rectangle, draw, fill=green!10, text centered, minimum width=4cm, minimum height=1cm, align=center, inner sep=6pt]
+\tikzstyle{modelnode} = [rectangle, draw, fill=orange!10, text centered, minimum width=4cm, minimum height=1cm, align=center, inner sep=6pt]
+\tikzstyle{outputnode} = [rectangle, draw, fill=gray!15, text centered, minimum width=4cm, minimum height=1cm, align=center, inner sep=6pt]
+
+% Nodes
+\node (input) [inputnode] {Raw Reference Strings};
+\node (token) [inputnode, below=1cm of input] {Tokenization \& Preprocessing};
+\node (features) [featurenode, left=0.5cm of token, yshift=-2cm] {Handcrafted Features\\ (AnyStyle-inspired)};
+\node (embedding) [featurenode, right=0.5cm of token, yshift=-2cm] {Embeddings\\ (BPE or BERT)};
+\node (fusion) [featurenode, below=3cm of token] {Feature Concatenation};
+\node (model) [modelnode, below=1cm of fusion] {Sequence Labeling Model\\ (CRF / BiLSTM)};
+\node (output) [outputnode, below=1cm of model] {Labeled Reference Output};
+
+% Arrows
+\draw [arrow] (input) -- (token);
+\draw [arrow] (token) -- (features);
+\draw [arrow] (token) -- (embedding);
+\draw [arrow] (features) -- (fusion);
+\draw [arrow] (embedding) -- (fusion);
+\draw [arrow] (fusion) -- (model);
+\draw [arrow] (model) -- (output);
+
+\end{tikzpicture}

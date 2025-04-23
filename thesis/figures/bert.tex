@@ -1,0 +1,41 @@
+\begin{tikzpicture}[
+  every node/.style={font=\small},
+  emb/.style={rectangle, minimum width=1.2cm, minimum height=0.8cm, draw, fill=gray!15},
+  arrow/.style={thick, ->, >=Stealth},
+  sum/.style={circle, draw, fill=blue!10, minimum size=0.6cm, inner sep=0pt}
+]
+
+% Tokens
+\node[emb, fill=red!10] (cls) {[CLS]};
+\node[emb, fill=red!10, right=0.2cm of cls] (the) {The};
+\node[emb, fill=red!10, right=0.2cm of the] (dog) {dog};
+\node[emb, fill=red!10, right=0.2cm of dog] (is) {is};
+\node[emb, fill=red!10, right=0.2cm of is] (cute) {cute};
+\node[emb, fill=red!10, right=0.2cm of cute] (sep1) {[SEP]};
+\node[emb, fill=red!10, right=0.2cm of sep1] (it) {It};
+\node[emb, fill=red!10, right=0.2cm of it] (likes) {likes};
+\node[emb, fill=red!10, right=0.2cm of likes] (playing) {playing};
+\node[emb, fill=red!10, right=0.2cm of playing] (sep2) {[SEP]};
+
+% Embedding layers
+\foreach \name/\above in {cls/cls, the/the, dog/dog, is/is, cute/cute, sep1/sep1, it/it, likes/likes, playing/playing, sep2/sep2} {
+  \node[emb, fill=blue!5, below=1cm of \name] (tok-\name) {T\textsubscript{Emb}};
+  \node[emb, fill=green!10, below=1cm of tok-\name] (seg-\name) {S\textsubscript{Emb}};
+  \node[emb, fill=orange!10, below=1cm of seg-\name] (pos-\name) {P\textsubscript{Emb}};
+
+  % Arrows from each embedding
+%   \draw[arrow] (tok-\name.north) -- (sum-\name.south);
+%   \draw[arrow] (seg-\name.north) -- (sum-\name.south);
+%   \draw[arrow] (pos-\name.north) -- (sum-\name.south);
+%   \draw[arrow] (sum-\name.north) -- (\name.south);
+}
+
+\node[sum, left=1.5cm of seg-cls] (sum) {$\sum$};
+\draw[arrow] (sum) -- (tok-cls);
+\draw[arrow] (sum) -- (seg-cls);
+\draw[arrow] (sum) -- (pos-cls);
+
+% Labels
+\node[align=center, above=0.2cm of the, font=\bfseries] {BERT Input Representation};
+
+\end{tikzpicture}

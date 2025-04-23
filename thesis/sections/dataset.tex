@@ -1,0 +1,102 @@
+\section{Dataset and Preprocessing}
+The accuracy of any machine learning algorithm, especially in sequence labeling problems, heavily relies on the quality and consistency of the input data. In this work, we use a vast corpus of citations to train and evaluate models to split and label reference strings into structured fields. This section describes the dataset used, the annotation and label formatting process, and the preprocessing pipeline that was developed to convert raw reference data into model inputs. Special attention is given to converting XML annotations into a standardized BIO tagging scheme and integrating both handcrafted and learned features.
+
+\subsection{Dataset Description}
+We employed the GIANT dataset~\cite{giant} to train as well as evaluate models for citation parsing in this research because it represents the largest public dataset of reference strings with annotations. The GIANT dataset came into existence to solve the problems of existing datasets due to their restricted nature of small sample size and limited domain applicability, while demonstrating minimal citation style variety. GIANT contains more than 991 million XML-labeled citation strings, allowing it to support modern deep learning approaches for reference string segmentation.
+
+The research team developed GIANT through the amalgamation of three components:
+\begin{compactitem}
+\item 677,000 bibliographic records from Crossref,
+\item The CSL repository contains 1,564 distinct citation styles, which form the basis of GIANT's data generation.
+\item A widespread citation processor named citeproc-js served as the tool for formatting citations.
+\end{compactitem}
+
+Through citeproc-js, the entire Crossref database received transformation into every supported citation style. The produced citation strings underwent XML-style labeling that marked fields including \texttt{<author>}, \texttt{<title>}, \texttt{<year>}, and \texttt{<journal>} together with other tags. The team changed citation styles by hand to add the necessary tags that surrounded important bibliographic content for sequence labeling model use. By converting the documents into machine-readable format, the dataset contains a versatile collection of citation styles that range from journal articles to books and chapters, in addition to conference papers.
+In total, the dataset includes:
+\begin{compactitem}
+\item \textbf{991,411,100 labeled citation strings}
+\item Derived from \textbf{633,895 unique citations}
+\item Spanning citation types such as:
+\begin{compactitem}
+\item Journal articles (75.9\%)
+\item Book chapters (12.4\%)
+\item Conference papers (5.6\%)
+\item Others (e.g., datasets, reference entries)
+\end{compactitem}
+\end{compactitem}
+
+All citations are in English, in the U.S. locale, and compressed for efficient retrieval. Every record also includes metadata such as citation type, citation style, and DOI. The metadata facilitates indexing and filtering, and researchers can focus on particular subdomains or types of citations when experimenting.
+
+The scale and diversity of GIANT make it especially suited for training sequence labeling models such as CRFs and neural networks, which benefit from having both large numbers and varied examples. In this work, we used a 5 million sample subsample of GIANT due to computational constraints, selecting records uniformly across citation styles and types in order to preserve diversity.
+
+\subsection{Label Set and Annotation Scheme}
+The process of training citation parsing models needs each reference string to receive bibliographic field-specific labels. For our work, we have selected the BIO tagging format because it functions as a standard annotation method in sequence labeling tasks. The BIO scheme helps identify token positions within fields by using three labels, which represent  \textbf{Begin}, \textbf{Inside}, and  \textbf{Outside}. The starting words of \texttt{'Title'} receive label \texttt{B-Title}, yet succeeding words within the title use the label \texttt{I-Title}. Tokens without specification fall under the category \texttt{O}.
+This data format proves being helpful in such applications because:
+\begin{compactitem}
+\item By using BIO it becomes simple to distinguish fields that extend across multiple consecutive tokens in cases such as lengthy author names and journal titles.
+\item By using this format, models automatically acquire better capabilities for moving between different field categories.
+\item CRF-based and neural sequence models with BIO-style labeling help the model to find complete compatibility when using this format.
+\end{compactitem}
+
+References in the original GIANT dataset receive full XML annotation for every listed field. A sample snippet includes different elements like \texttt{<author>}, \texttt{<given>}, \texttt{<family>}, \texttt{<title>}, \texttt{<issued>}, \texttt{<volume>}, \texttt{<container-title>}, \texttt{<page>} and \texttt{<URL>}, for example:
+\begin{verbatim}
+<author>
+  <family>Ritchie</family>, <given>E.</given> and
+  <family>Powell</family>, <given>Elmer Ellsworth</given>
+</author>
+(<issued><year>1907</year></issued>)
+<title>Spinoza and Religion.</title>
+<container-title>The Philosophical Review</container-title>,
+<volume>16</volume>(<issue>3</issue>), p.
+<page>339</page>. [online] Available from:
+<URL>http://dx.doi.org/10.2307/2177340</URL>
+\end{verbatim}
+
+The detailed annotation scheme becomes complex for training models since multiple fields (such as \texttt{<given>} and \texttt{<family>}) need to merge into the \texttt{Author} category.
+For this work, the annotated reference was simplified in an automated manner to retain only the most essential labels. These simplified labels were chosen to reflect the minimum necessary structure required to uniquely identify a cited work, while also keeping the annotation task manageable for a learning algorithm.
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\textbf{Label} & \textbf{Description} \\
+\hline
+Author & Names of authors, editors, or contributors \\
+Title & Title of the work (book, article, etc.) \\
+Container-Title & Journal, conference, or book series \\
+Year & Year of publication \\
+Volume & Volume number \\
+Issue & Issue number (if available) \\
+Page & Page number or page range \\
+Publisher & Publishing organization or institution \\
+DOI & Digital Object Identifier \\
+ISSN & International Standard Serial Number (if available) \\
+ISBN & International Standard Book Number \\
+URL & Web link to the cited item \\
+\end{tabular}
+\caption{Simplified label set used for BIO tagging.}
+\label{tab:labels}
+\end{table}
+
+\subsection{Preprocessing Steps}
+Before training, a chain of preprocessing operations had been done on the raw GIANT dataset in order to prepare reference strings for sequence labeling. The data originally came in the form of XML-annotated data with mixed nested tags and unnecessary metadata. The pipeline below was applied in order to preprocess the training data into something clean and homogeneous:
+\subsubsection{1. Tag Filtering and Simplification}
+The original XML annotations contained a wide range of nested tags like \texttt{<given>}, \texttt{<family>}, and other irrelevant elements. A regular expression pattern was applied to extract all XML tags along with their values. A filtering step retained only a selected subset of allowed labels (e.g., \texttt{Author}, \texttt{Title}, \texttt{DOI}), and all the other tags were automatically removed.
+This step of reducing tags made sure that only meaningful fields remained, but the job of annotation was still feasible for models. To remove nested tags, a recursive function was called, which left the valuable content and removed everything else.
+\subsubsection{2. Cleaning Text}
+Following tag filtering, the content left was flattened to plain text with labels implicit through XML tags for the permitted classes. Tokens were then processed for BIO annotation by regular expressions that:
+\begin{compactitem}
+\item Detect punctuation
+\item Strip whitespace
+\item Collapse nested or badly formed tags
+\end{compactitem}
+Each cleaned string was stored as an additional column alongside the original one, so that raw and processed inputs could be compared. 
+\subsubsection{3. BIO Tagging}
+Although not illustrated here in this phase, the reference strings that were cleaned were then tokenized and tagged in BIO format. The tokens were matched against the collapsed XML tags and tagged as \texttt{B-<TAG>} or \texttt{I-<TAG>}, based on their position within the field. Tokens that were not labeled were tagged with \texttt{O}.
+\subsubsection{4. Splitting the Dataset}
+Initial data files were read in from a subset of the GIANT dataset, shuffled using a set seed for reproducibility. Data was divided into:
+\begin{compactitem}
+\item 5 million training
+\item 200k validation
+\item 200k test
+\end{compactitem}
+This splitting was done similarly for all the samples to preserve type and style diversity.
+

@@ -1,0 +1,41 @@
+\begin{tikzpicture}[
+    node distance=1.1cm,
+    process/.style={rectangle, draw, minimum width=4cm, minimum height=0.9cm, align=center, fill=gray!10},
+    embed/.style={rectangle, draw, minimum width=4cm, minimum height=0.9cm, align=center, fill=blue!10},
+    arrow/.style={->, thick, >=Stealth}
+]
+    
+    % Inputs
+    \node[process] (bpe) {Pre-trained Embeddings};
+    \node[process, below=of bpe] (lstm) {BiLSTM};
+    \node[process, below=of lstm] (drop1) {Dropout};
+    
+    \node[process, right=3cm of bpe] (hand) {Handcrafted Features};
+    \node[embed, below=of hand] (handemb) {Embedding Layer};
+    \node[embed, below=of handemb] (proj) {Linear Projection};
+    \node[process, below=of proj] (drop2) {Dropout};
+    
+    % Fusion
+    \node[process, below=2.5cm of drop1] (add) {Element-wise Addition};
+    
+    % Output
+    \node[process, below=of add] (linear) {Linear Classifier};
+    \node[process, below=of linear] (crf) {CRF Layer};
+    
+    % Arrows: Left path (BPE → BiLSTM)
+    \draw[arrow] (bpe) -- (lstm);
+    \draw[arrow] (lstm) -- (drop1);
+    \draw[arrow] (drop1.south) -- (add.north);
+    
+    % Arrows: Right path (Hand Features)
+    \draw[arrow] (hand) -- (handemb);
+    \draw[arrow] (handemb) -- (proj);
+    \draw[arrow] (proj) -- (drop2);
+    \draw[arrow] (drop2) |- (add.east);
+    
+    % Output path
+    \draw[arrow] (add) -- (linear);
+    \draw[arrow] (linear) -- (crf);
+    
+\end{tikzpicture}
+    

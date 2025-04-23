@@ -1,0 +1,67 @@
+\select@language {english} \contentsline {chapter}{Declaration}{1}{chapter*.1}%
+\select@language {english} \contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
+\select@language {english} \contentsline {chapter}{\numberline {2}Related Work}{6}{chapter.2}%
+\select@language {english} \contentsline {section}{\numberline {2.1}Early Methods and the Rise of Machine Learning}{6}{section.2.1}%
+\select@language {english} \contentsline {section}{\numberline {2.2}Limitations of Feature-Engineered Systems}{7}{section.2.2}%
+\select@language {english} \contentsline {section}{\numberline {2.3}Transition to Deep Learning Models}{7}{section.2.3}%
+\select@language {english} \contentsline {section}{\numberline {2.4}Innovations with Contrastive and Prompt Learning}{8}{section.2.4}%
+\select@language {english} \contentsline {section}{\numberline {2.5}Comparative Evaluations and Modern Architectures}{9}{section.2.5}%
+\select@language {english} \contentsline {section}{\numberline {2.6}Other Tools and Alternative Approaches}{9}{section.2.6}%
+\select@language {english} \contentsline {section}{\numberline {2.7}Summary and Open Challenges}{10}{section.2.7}%
+\select@language {english} \contentsline {chapter}{\numberline {3}Methodology}{11}{chapter.3}%
+\select@language {english} \contentsline {section}{\numberline {3.1}System Architecture}{11}{section.3.1}%
+\select@language {english} \contentsline {subsection}{\numberline {3.1.1}Input and Dataset Constraints}{11}{subsection.3.1.1}%
+\select@language {english} \contentsline {subsection}{\numberline {3.1.2}Preprocessing and Tokenization}{12}{subsection.3.1.2}%
+\select@language {english} \contentsline {subsection}{\numberline {3.1.3}Feature Extraction}{12}{subsection.3.1.3}%
+\select@language {english} \contentsline {subsection}{\numberline {3.1.4}Embedding Generation and Feature Fusion}{13}{subsection.3.1.4}%
+\select@language {english} \contentsline {subsection}{\numberline {3.1.5}Sequence Labeling and Output}{13}{subsection.3.1.5}%
+\select@language {english} \contentsline {section}{\numberline {3.2}Feature Engineering}{15}{section.3.2}%
+\select@language {english} \contentsline {subsection}{\numberline {3.2.1}Handcrafted Features}{15}{subsection.3.2.1}%
+\select@language {english} \contentsline {subsubsection}{Affix Feature}{16}{section*.3}%
+\select@language {english} \contentsline {subsubsection}{Brackets Feature}{17}{section*.4}%
+\select@language {english} \contentsline {subsubsection}{Canonical Feature}{17}{section*.5}%
+\select@language {english} \contentsline {subsubsection}{Caps Feature}{18}{section*.6}%
+\select@language {english} \contentsline {subsubsection}{Category Feature}{18}{section*.7}%
+\select@language {english} \contentsline {subsubsection}{Dictionary Feature}{19}{section*.8}%
+\select@language {english} \contentsline {subsubsection}{Keyword Feature}{20}{section*.9}%
+\select@language {english} \contentsline {subsubsection}{Locator Feature}{21}{section*.10}%
+\select@language {english} \contentsline {subsubsection}{Number Feature}{21}{section*.11}%
+\select@language {english} \contentsline {subsubsection}{Position Feature}{22}{section*.12}%
+\select@language {english} \contentsline {subsubsection}{Punctuation Feature}{23}{section*.13}%
+\select@language {english} \contentsline {subsubsection}{Terminal Feature}{24}{section*.14}%
+\select@language {english} \contentsline {subsection}{\numberline {3.2.2}Embedding-Based Features}{26}{subsection.3.2.2}%
+\select@language {english} \contentsline {subsubsection}{Byte-Pair Encoding (BPE) Embeddings}{26}{section*.17}%
+\select@language {english} \contentsline {subsubsection}{BERT Embeddings}{27}{section*.18}%
+\select@language {english} \contentsline {subsection}{\numberline {3.2.3}Feature Integration}{30}{subsection.3.2.3}%
+\select@language {english} \contentsline {section}{\numberline {3.3}Sequence Labeling Models}{31}{section.3.3}%
+\select@language {english} \contentsline {subsection}{\numberline {3.3.1}Conditional Random Fields (CRF)}{31}{subsection.3.3.1}%
+\select@language {english} \contentsline {subsubsection}{CRFsuite}{32}{section*.21}%
+\select@language {english} \contentsline {subsubsection}{Neural CRF in PyTorch}{33}{section*.22}%
+\select@language {english} \contentsline {subsection}{\numberline {3.3.2}BiLSTM + CRF}{34}{subsection.3.3.2}%
+\select@language {english} \contentsline {subsubsection}{BiLSTM Encoding}{34}{section*.23}%
+\select@language {english} \contentsline {subsubsection}{Integration of Handcrafted Features}{34}{section*.24}%
+\select@language {english} \contentsline {subsubsection}{CRF Output Layer}{34}{section*.25}%
+\select@language {english} \contentsline {section}{\numberline {3.4}Dataset and Preprocessing}{36}{section.3.4}%
+\select@language {english} \contentsline {subsection}{\numberline {3.4.1}Dataset Description}{36}{subsection.3.4.1}%
+\select@language {english} \contentsline {subsection}{\numberline {3.4.2}Label Set and Annotation Scheme}{37}{subsection.3.4.2}%
+\select@language {english} \contentsline {subsection}{\numberline {3.4.3}Preprocessing Steps}{39}{subsection.3.4.3}%
+\select@language {english} \contentsline {subsubsection}{1. Tag Filtering and Simplification}{39}{section*.28}%
+\select@language {english} \contentsline {subsubsection}{2. Cleaning Text}{39}{section*.29}%
+\select@language {english} \contentsline {subsubsection}{3. BIO Tagging}{39}{section*.30}%
+\select@language {english} \contentsline {subsubsection}{4. Splitting the Dataset}{40}{section*.31}%
+\select@language {english} \contentsline {section}{\numberline {3.5}Training and Evaluation Setup}{41}{section.3.5}%
+\select@language {english} \contentsline {subsection}{\numberline {3.5.1}CRFsuite Model}{41}{subsection.3.5.1}%
+\select@language {english} \contentsline {subsection}{\numberline {3.5.2}BiLSTM + CRF Model (Neural CRF)}{41}{subsection.3.5.2}%
+\select@language {english} \contentsline {chapter}{\numberline {4}Results}{43}{chapter.4}%
+\select@language {english} \contentsline {section}{\numberline {4.1}Evaluation Metrics}{43}{section.4.1}%
+\select@language {english} \contentsline {section}{\numberline {4.2}Model Comparison}{44}{section.4.2}%
+\select@language {english} \contentsline {subsection}{\numberline {4.2.1}CRF Configurations}{44}{subsection.4.2.1}%
+\select@language {english} \contentsline {subsection}{\numberline {4.2.2}BiLSTM + CRF}{45}{subsection.4.2.2}%
+\select@language {english} \contentsline {subsection}{\numberline {4.2.3}BERT-based CRF Model}{45}{subsection.4.2.3}%
+\select@language {english} \contentsline {subsection}{\numberline {4.2.4}Final Comparison of Best Model Variants}{46}{subsection.4.2.4}%
+\select@language {english} \contentsline {subsection}{\numberline {4.2.5}Analysis of Results}{47}{subsection.4.2.5}%
+\select@language {english} \contentsline {subsection}{\numberline {4.2.6}LLM Comparison}{49}{subsection.4.2.6}%
+\select@language {english} \contentsline {chapter}{Acknowledgements}{50}{chapter*.37}%
+\select@language {english} \contentsline {chapter}{Bibliography}{50}{section*.38}%
+\select@language {english} \contentsline {chapter}{List of Figures}{56}{section*.40}%
+\select@language {english} \contentsline {chapter}{List of Tables}{57}{section*.41}%

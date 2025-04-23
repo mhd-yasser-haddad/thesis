@@ -1,0 +1,5 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'elteikthesis_en.blg'
+[91] biber:340> INFO - === Sat Apr 12, 2025, 04:25:54
+[124] Utils.pm:399> ERROR - Cannot find 'elteikthesis_en.bcf'!
+[124] Biber.pm:136> INFO - ERRORS: 1

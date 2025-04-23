@@ -1,0 +1,63 @@
+\subsection{Embedding-Based Features}
+Embedding-based features provide dense, learned token representations through embedding semantic and contextual details. Contrary to handcrafted features that rely on surface patterns and professional knowledge, embeddings are learned in large bodies of text and may involve subtle language use, structural dependencies, and sense. In this paper, we experiment with two types of embeddings: Byte-Pair Encoding (BPE) embeddings and BERT-based contextual embeddings. These embeddings are used alone or blended with hand-crafted features to enhance the model's ability to label tokens appropriately in reference strings.
+
+\subsubsection{Byte-Pair Encoding (BPE) Embeddings}
+Byte-Pair Encoding (BPE) embeddings offer a tokenization-free, light, and multilingual way of subword representation. We incorporate in this paper pre-trained BPE embeddings released by the BPEmb project, which offers subword-level vector representations for 275 languages, including low-resource languages~\cite{bpemb}.
+BPE is a data-driven compression algorithm that continuously merges the most frequent adjacent symbol pairs in a sequence. For example, in English, the most frequent pair, such as \texttt{t} and \texttt{h} might be merged into \texttt{th}, then further pairs such as \texttt{th} and \texttt{e} into \texttt{the}, depending on frequency. The number of merge operations the unit receives will determine its granularity as a subword unit, with fewer being more finely grained at the character level and more being units that are more like whole words~\cite{bpemb}.
+
+BPEmb takes advantage of this idea to split untokenized, raw Wikipedia text into many languages and then learns embeddings across subword units using the GloVe algorithm~\cite{bpemb}~\cite{glove}. The method has the following significant advantages:
+\begin{compactitem}
+\item \textbf{No tokenization required,} especially suitable for languages without word boundaries (for example, Chinese, Japanese).
+\item \textbf{Multilinguality,} with embeddings trained over a wide variety of languages, ranging from high-, medium-, and low-resource languages.
+\item \textbf{Compact size,} outperforming other models like FastText in certain languages while using significantly less memory (e.g., 11MB for BPEmb vs. 6GB for FastText)~\cite{bpemb}~\cite{bojanowski-enriching}.
+\end{compactitem}
+On tasks of evaluation, such as fine-grained entity typing, BPEmb outperformed or matched both FastText and character-based models in several languages, including English, Chinese, and Tibetan~\cite{bpemb}. This makes BPE embeddings particularly valuable in low-resource settings or scenarios involving efficient memory usage.
+The embeddings used here were selected based on their performance–dimensionality trade-offs and were fused as features in addition to handcrafted features. This allowed the model to leverage both learned semantic representations and clear, human-designed signals.
+
+
+\subsubsection{BERT Embeddings}
+BERT (Bidirectional Encoder Representations from Transformers) is a language representation model created by Devlin et al.~\cite{2019-bert} to obtain superior performance on downstream NLP tasks by providing deep, bidirectional contextual embeddings. Unlike earlier models such as GPT~\cite{gpt-2018} or ELMo~\cite{elmo}, BERT is pre-trained to encode both left and right context together at all layers, rather than using two separate models.
+BERT uses a multi-layer Transformer encoder model, expanding on Vaswani et al.~\cite{attention-2017}. There are two main versions of the model:
+\begin{compactitem}
+\item\textbf{BERT\textsubscript{BASE}:} 12 layers, 768 hidden units, 12 attention heads, 110 million total parameters.
+\item \textbf{BERT\textsubscript{LARGE}:} 24 layers, 1024 hidden units, 16 attention heads, 340 million parameters.
+\end{compactitem}
+To pre-train its embeddings, BERT relies on two significant unsupervised objectives:
+\begin{compactitem}
+\item \textbf{Masked Language Modeling (MLM):} 15\% of the tokens in each input sequence are randomly masked during training, and the model is trained to predict the original tokens based on the entire bidirectional context. This trains the model to capture deeper language patterns and dependencies.
+\item \textbf{Next Sentence Prediction (NSP):} The model is trained to predict if sentence B follows sentence A, in order to enable it to learn sentence-level relations crucial for tasks like question answering and textual entailment.
+\end{compactitem}
+BERT's input representation is constructed by combining three types of embeddings:
+\begin{compactitem}
+\item \textbf{Token embeddings} based on WordPiece tokenization~\cite{wordpiece}.
+\item \textbf{Segment embeddings} to differentiate between sentences in a pair.
+\item \textbf{Positional embeddings} that convey token order.
+\end{compactitem}
+These three parts are summed up to form the final embedding of each token. All inputs begin with a special [CLS] classification token, and [SEP] tokens are used to delimit different sentences.
+There are two major ways to use BERT:
+\begin{compactitem}
+\item \textbf{Fine-tuning:} The entire model is fine-tuned on a specific downstream task by adding a small output layer on top.
+\item \textbf{Feature extraction:} BERT is used to generate contextual token embeddings, which are then used as input to another model, e.g., a sequence tagger.
+\end{compactitem}
+
+Benefits of BERT Embeddings:
+\begin{compactitem}
+\item They are deeply bidirectional, representing full context around each token.
+\item They are pre-trained on large corpora, including the BooksCorpus and English Wikipedia, so they are robust and generally applicable.
+\item They achieve state-of-the-art performance on a range of tasks, including sentence classification, named entity recognition, and question answering.
+\end{compactitem}
+
+\begin{figure}[ht]
+    \centering
+    \input{./figures/bert.tex}
+    \caption{The BERT input representation: each token is represented as the sum of its token, segment, and positional embeddings.}
+    \label{fig:bert-input}
+\end{figure}
+
+\textbf{Linq-Embed-Mistral: A Modern BERT-style Encoder}
+
+While the original BERT model has been an essential architecture for natural language processing, it has been the target of numerous improvements in terms of training efficiency, multilingual generalization, and embedding quality. As explained in the Hugging Face article about new variants of BERT, newer models such as MiniLMv2, E5, and Mistral-based encoders have comparatively much better performance on embedding tasks, particularly for retrieval, classification, and sentence similarity use cases.
+
+In this work, rather than using the baseline BERT model~\cite{2019-bert}, we decided to use a modern BERT-style encoder from the Hugging Face leaderboard, specifically the Linq-Embed-Mistral model~\cite{linq}. The encoder is a fusion of the Mistral transformer backbone with simplified embedding tuning, offering dense high-quality representations well adapted to token-level tasks like reference parsing. The model was one of the top-performing multilingual text encoders and offered strong out-of-the-box performance in zero-shot or low-shot settings — a valuable property for parsing reference styles not directly seen at training time.
+The Linq-Embed-Mistral model was used in the same application as BPE or standard BERT embeddings, generating subword-level context embeddings for each token in a reference string.
+

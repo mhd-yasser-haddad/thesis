@@ -1,0 +1,30 @@
+\section{Feature Engineering}
+
+Feature engineering is vital to the reference parsing system introduced in this work. The bibliographic reference segmentation is a prediction problem, one where the model must assign a field-level label (author, title, year, etc.) to each token in a sequence. In order to be able to do this efficiently, the model requires informative representations of each token, those representations should capture both the token’s content and its contextual significance.
+
+In the past few years, there has been a growing popularity in employing deep contextual embeddings like BERT~\cite{2019-bert} to embed text in natural language processing tasks. Even in tasks like citation parsing, where structure and formatting have strong semantic clues, traditional hand-engineered features can still have a significant value. They extract surface information that is often consistent across citation styles, like punctuation patterns, capitalization, or token order.
+
+To gain a balance between generalization and interpretability, our system uses two types of features:
+\begin{enumerate}
+\item A set of \textbf{handcrafted features} inspired by the AnyStyle~\cite{anystyle} citation parser.
+\item \textbf{Learned embeddings} derived from either subword-level models (BPE)~\cite{bpemb} or deep contextual models (BERT)~\cite{2019-bert}.
+\end{enumerate}
+In the following sections, we describe each feature group in detail, beginning with the handcrafted features.
+
+\input{sections/hand_features.tex}
+\clearpage
+
+\input{sections/embeddings.tex}
+\clearpage
+
+\subsection{Feature Integration}
+To merge learned and handcrafted knowledge, this project concatenates the output of pretrained embeddings with handcrafted feature embeddings. For models that consume dense representations (e.g., BiLSTM + CRF), every handcrafted feature is first assigned a separate vocabulary of its possible discrete values (e.g., prefixes, types of capitalization, punctuation types). These category values are then realized in trainable vectors by using a specialized nn.Embedding layers in PyTorch so that the model can best learn representations during training.
+The token-level final representation is created by concatenating:
+\begin{compactitem}
+\item A subword embedding (e.g., from BPEmb or BERT)
+\item A concatenated vector of learned embeddings for each handcrafted feature
+\end{compactitem}
+This resulting aggregated vector is then passed into the downstream neural model. For example, in the BiLSTM + CRF setup, the aggregated embedding is passed as input to the CRF layer.
+
+Conversely, using a default CRF implementation (e.g., using CRFsuite), the model does not take or require dense vector embeddings. Instead, it consumes sparse handcrafted features directly in the form of one-hot encoded tags. Thus, the integration step is omitted, and only the handcrafted features are fed into the CRF.
+

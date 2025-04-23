@@ -1,0 +1,199 @@
+\subsection{Handcrafted Features}
+In this work, one of the design decisions was to complement neural embeddings with a robust set of hand-engineered features. These features provide interpretable, low-level cues that are very useful for detecting structural patterns in citation strings, patterns that are often overlooked ot inconsistently represented in pretrained language models. Our approach to feature engineering is influenced by AnyStyle, an open-source library for citation parsing developed by Sylvester Keil~\cite{anystyle}.
+
+AnyStyle models citation parsing as a sequence labeling task and relies on a CRF model that has been trained on a wide range of citation styles. Unlike neural architectures, which can rely a lot on pretraining and embeddings, AnyStyle achieves high performance through a well-crafted set of features that encode orthographic, lexical, and contextual information.
+These include features such as token capitalization, punctuation patterns, and dictionary lookups, all these features are designed to enable the model to detect bibliography entities in different types of citations.
+
+In our system, we take and extend this method by constructing a set of features to feed into the model, concatenated with subword and contextual embeddings. This mixed representation allows the model to take advantage of deep contextual understanding through embeddings and interpretable surface signals from the hand-engineered features.
+To facilitate compatibility, we re-implemented a subset of AnyStyle’s feature classes, modifying or adding to some where necessary.
+
+In the following sections, we’ll describe each feature class, its role, and how it helps in the overall reference parsing task. 
+
+\subsubsection{Affix Feature}
+The affix feature extracts fixed-length prefixes and suffixes of tokens. It is useful for recording common patterns in names, abbreviations, or technical terms that appear repeatedly in bibliography citations. For instance, author initials like “J.” or “Ph.”, or journal abbreviations like “IEEE” or “JMLR”, have a specific pattern at the start or end of words.
+This feature works by taking a number of characters from the beginning (prefix) or end (suffix) of the token. In our case, two variations of this feature class were applied: one that takes the first two characters (prefix) from the token, and another one that takes the last two characters (suffix) from the token. These affix pieces are built up incrementally–so the prefix extractor for a token like “Journal” would extract “J” and “Jo”, and the suffix extractor would extract “l” and “al”.
+
+Affix features make the model able to generalize to out-of-vocabulary tokens by picking up on subword patterns that could indicate specific field types. For example, journal names often have a shared suffix like “-ology” or “-ics”, and author names often have a predictable pattern of abbreviations. While it’s simple in structure, these features are helpful in field prediction, especially where token-level embeddings on their own can sometimes lack attention to detail.
+
+\subsubsection{Brackets Feature}
+The brackets feature captures data on whether a token is enclosed by or adjacent to typical bracket symbols, such as parentheses \texttt{()}, square brackets \texttt{[]}, or angle brackets \texttt{<>}. This is a useful feature because citation formats could put some metadata in brackets – e.g., publication years, volume numbers, or reference indices – to visually distinguish them from other fields.
+This feature adds a tag to the token, such as \texttt{parens}, \texttt{square-brackets}, \texttt{angle}, or more specific tags such as \texttt{opening-paren}, \texttt{closing-square-bracket}, etc., depending on the shape of the token. For example, the token (2003) would be tagged as \texttt{parens}, and a token starting with \texttt{[} would be tagged as \texttt{opening-square-bracket}.
+Tokens without any brackets are simply tagged as \texttt{none}. When the token does not belong to one of the typical patterns, it is tagged as \texttt{other}.
+
+By flagging bracket types and positions, this feature enables the model to recognize common citation patterns, like parenthesized years or square-bracketed reference numbers, that are used across many citation styles. This kind of formatting hint is sometimes necessary to help get an accurate segmentation and recognize which field this token might belong to, especially in noisy or reference strings extracted using OCR.
+
+\subsubsection{Canonical Feature}
+The canonical feature provides a normalized representation of each token by removing accents and converting it to a standardized, lowercase form. The main goal is that tokens of the same structure or meaning are treated in the same way by the model, whether they appear different due to language, style, or formatting differences.
+In order to achieve this, the feature captures the first shape of the token (before any change) and performs some normalization operations. It initially performs Unicode normalization to break the characters down to their base form – i.e., separating a letter from its accent marks. It then removes all the accents and other diacritical marks, retaining only the base characters.
+Finally, it scrubs the string of any additional formatting noise and makes it lowercase.
+
+For instance, the name \texttt{García} is shortened into \texttt{garcia}, and \texttt{MÜLLER} to \texttt{muller}. This makes it easier for the model to recognize that these are likely the same name or entity with minor stylistic or typographic differences.
+This capability proves useful, especially while tokenizing citations with names, titles, or journal names in multiple languages or styles. It minimizes inconsistency in the input and allows the model to generalize more effectively over the large variety of tokens found in citation strings.
+
+\subsubsection{Caps Feature}
+The caps feature tracks information about the capitalization pattern of each token. Capitalization tends to be an effective cue in reference strings — i.e., it can signal the occurrence of names, acronyms, or stylized title spacing. By observing and categorizing these patterns, the model has the ability to enhance on identify between different types of fields such as author names, journal names, or abbreviations.
+
+This property works by looking at the original shape of the token and assigning one of a set of classes depending on whether and where there is one or more uppercase letters:
+\begin{compactitem}
+\item \textbf{single:} A single uppercase letter (e.g., \texttt{J}), common in shortened names or initials.
+\item \textbf{initial:} A token that starts with an uppercase letter followed by a lowercase letter (e.g., \texttt{John}), typically used for names or title-cased words.
+\item \textbf{caps:} A word token that consists entirely of all capital letters (e.g., \texttt{IEEE}, \texttt{SCIENCE}), typically delimiting acronyms or publication titles.
+\item \textbf{lower:} A word token consisting only of lowercase letters (e.g., \texttt{and}, \texttt{volume}), typically less informative in a stand-alone.
+\item \textbf{other:} An extra bucket for anything token-wise not accommodated by the above patterns, e.g., words of mixed cases, numbers, or punctuation.
+\end{compactitem}
+
+By assigning tokens to these capitalization classes, the model is more likely to correctly infer the possible function of a token within a citation, particularly when combined with other structural or contextual information.
+
+\subsubsection{Category Feature}
+The category feature determines Unicode character type of the first and last token characters to yield basic structural details. Through this analysis, the model achieves token classification based on characters, which provides information about first-letter identification and terminal punctuation, and symbol and number presence.
+
+The feature retrieves the first and last tokens and then assigns them to the appropriate Unicode general categories through its mapping process. The Unicode general categories cover uppercase letters (\texttt{Lu}), lowercase letters (\texttt{Ll}), modifier letters (\texttt{Lm}), numbers (\texttt{N}), punctuation types (\texttt{P}, \texttt{Pc}, \texttt{Pd}, etc.), symbols (\texttt{S}), and unspecified other categories. Character data that cannot be categorized goes under the category of \texttt{none}.
+
+For example:
+\begin{compactitem}
+\item When applied to \texttt{Vol.} the Vol. feature would provide output as \texttt{Lu} for \texttt{V} and \texttt{P} for the period.
+\item The token 2023) provides both \texttt{N} as a number category and \texttt{Pe} for parenthesis.
+\end{compactitem}
+The model can apply its knowledge to numerous token forms because this feature ignores token content. The reference string benefits from this feature if it contains structured formatting cues that indicate field boundaries or field types through specific brackets or numbers and characters.
+
+\subsubsection{Dictionary Feature}
+The dictionary feature tries to see if a token matches a known word in a collection of lists that includes names, places, publishers, and journal names. The lists are being read from a dictionary file, grouped into the lists mentioned above. It is useful for detecting entities that would show up in a frequent way in reference strings, such as publisher names, city names of publication, or common journal abbreviations.
+Each token is compared and checked to see if it exists in one of these lists:
+\begin{compactitem}
+\item \textbf{name} - common first or last names in the author field
+\item \textbf{place} - cities or locations typically in publisher field
+\item \textbf{publisher} - publishing firm or organisation names
+\item \textbf{journal} - full journal titles or journal abbreviations
+\end{compactitem}
+If a token exists in one of the lists, it is marked as \texttt{T} (true) for that category; otherwise, it’ll be marked \texttt{F} (false). The output vector from this feature will have four components, each referencing one of the dictionary categories.
+For example, token \texttt{Springer} might return \texttt{[F, F, T, F]}, which indicates that there is a match in the publisher dictionary but not in other dictionaries. This feature will allow the model to create a connection between a token with a role for it, which could lead to an increase in accuracy in the field segmentation.
+
+The dictionary lists are extracted from structured reference data and preprocessed for consistency. Although these features are not very reliable and couldn’t be sufficient to provide correct labeling, they help with adding precision signals when used with contextual or structural features.
+
+\subsubsection{Keyword Feature}
+The keyword feature uses keyword patterns to assess token classification regarding previously known semantic categories. This detection method is intended to identify particular metadata signals within citation strings by analyzing both words and symbols.
+
+The internal operation uses pre-determined groups of regular expressions that control category matching. The semantic roles (\texttt{editor}, \texttt{journal}, \texttt{date}, \texttt{volume}) exist as separate categories, and the system checks each token against different language versions of relevant keywords. Editor-related terminology in the metadata section contains multiple English designs, including \texttt{ed.}, \texttt{editors}, and \texttt{edited}, in addition to German (\texttt{herausgeber}) and Spanish or French equivalents (\texttt{compilador}). The grammar accepts character sequences from the symbolic series and the CJK series.
+This feature evaluates by testing every pattern one by one until it encounters a category expression that perfectly matches the current token. The feature operates without producing an output whenever no suitable matching pattern exists.
+Some example categories include:
+\begin{compactitem}
+\item \textbf{editor:} tokens like \texttt{ed.}, \texttt{Hrsg.}
+\item \textbf{volume:} \texttt{vol.}, \texttt{no.}, \texttt{issue}, \texttt{heft}
+\item \textbf{date:} matches several months or season names such as \texttt{May}, \texttt{Fall}, and \texttt{Herbst}.
+\item \textbf{journal:} words like \texttt{Journal}, \texttt{Quarterly}, \texttt{Review}, or \texttt{Zeitschrift}
+\item \textbf{accessed:} metadata like \texttt{retrieved}, \texttt{accessed}, \texttt{abgerufen}.
+\item \textbf{locator:} \texttt{doi}, \texttt{url}
+\item \textbf{etal:} short forms like \texttt{et al.}, \texttt{others}
+\end{compactitem}
+Through this feature, the model gains enhanced semantic cues, which improve its ability to detect tokens with functional significance above visual presentation form. The feature precisely detects citation components, especially for their publication placement (\texttt{in}) as well as their authorship (\texttt{author}, \texttt{editor}, \texttt{translator}) and reference access methods (\texttt{url}, \texttt{arxiv}, \texttt{pubmed}).
+Tokens that match the established keyword categories function as strong indicators for the field, but only some tokens have matching entries.
+
+\subsubsection{Locator Feature}
+The Locator function identifies persistent digital identifiers along with external resource pointers that function as tokens. The system contains the main groups of locators: DOIs, URLs, ISBNs, and PubMed IDs, along with additional academic citation locator types. Recognition of these tokens is vital because they most commonly occur at citation endings while holding semantic and structural differences from the rest of the fields.
+The feature uses regular expression patterns to detect persistent digital identifiers, which also include commonly used external resource pointers:
+\begin{compactitem}
+\item The token detection system verifies terms which include \texttt{DOI}, \texttt{ISBN}, \texttt{URL}, \texttt{PMCID} and \texttt{PubMed}.
+\item A Digital Object Identifier stands as \texttt{10.} followed by a numeric prefix and a suffix which combines as \texttt{10.1000/xyz123}.
+\item The feature detects typical URI forms which start with \texttt{http://}, \texttt{https://}, or \texttt{ftp://} within web addresses.
+\end{compactitem}
+The feature returns \texttt{'T'} (true) when any defined patterns match within the analyzed token, indicating a potential locator. Otherwise, it returns \texttt{'F'} (false).
+Example:
+\begin{compactitem}
+\item \texttt{https://doi.org/10.1007/s00799-018-0242-1} → \texttt{T}
+\item \texttt{PMID: 12345678} → \texttt{T}
+\item \texttt{Springer} → \texttt{F}
+\end{compactitem}
+Through this feature, the model detects tokens containing external source references and accesses information, thus enhancing its ability to accurately classify fields, particularly for digital and web-based references.
+
+\subsubsection{Number Feature}
+The number feature categorizes tokens based on whether and how there is numerical information. Numbers are essential in the middle of many bibliographic fields — e.g., years, volume numbers, ranges of pages, ISBNs, or identifiers — and understanding their format can help the model to decide the token's likely function in a citation. This feature applies a series of pattern-matching rules to translate all numeric tokens into a particular category. Some of the main categories include:
+\begin{compactitem}
+\item \textbf{volume:} Tokens that have the appearance of a volume and issue format, such as \texttt{12(3)} or \texttt{5:7}.
+\item \textbf{isbn:} Strings that conform to the pattern of ISBN numbers, both starting with \texttt{978} and those starting with \texttt{979}.
+\item \textbf{year:} Four-digit years from a reasonable range of history, such as \texttt{1998} or \texttt{2023}.
+\item \textbf{quad, triple, double, single:} Tokens made up of 4, 3, 2, or 1 digits respectively. These simple forms typically represent years, page numbers, or brief identifiers.
+\item \textbf{all:} Tokens made entirely of digits, but not in one of the other specialized forms.
+\item \textbf{range:} Numerical ranges with hyphens, e.g., \texttt{123–145}, commonly page numbers.
+\item \textbf{idnum:} Alphanumeric identifiers in which a number is prefixed with letters or codes, e.g., \texttt{ABC-123} or \texttt{ISSN2049}.
+\item \textbf{ordinal:} Numerical and alphabetical combination tokens, e.g., \texttt{3rd}, \texttt{21st}, or \texttt{2a}, appearing infrequently in editions or titles.
+\item \textbf{numeric:} Tokens having at least one digit but none of the preceding patterns.
+\item \textbf{roman:} Roman numerals like \texttt{III}, \texttt{XIV}, or \texttt{iv}, appearing infrequently to number chapters, volumes, or appendices.
+\end{compactitem}
+Otherwise, if the token does not belong to any known numeric pattern, it gets labeled as \texttt{none}.
+
+By classifying these fine-grained numeric types, the model gains a deeper sense of the organization of the reference, having the ability to distinguish between a publication year, an ISBN, and a volume/issue number, even when all appear to be numbers. This helps to improve the precision of field classification, especially for citation styles that vary in the way and where numbers appear.
+
+\subsubsection{Position Feature}
+The position feature holds the relative location of a token within the reference string. In citation parsing, when a token's position can powerfully predict its role, its position tends to reveal a great deal about its function. Authors' names tend to be toward the front, say, whereas publication dates, URLs, or page numbers tend to appear closer to the end.
+This feature gives back one of the following values, depending on the token's position in the sequence:
+\begin{compactitem}
+\item \textbf{only:} If the token is the only token in the sequence
+\item \textbf{first:} If the token is the first token in the sequence
+\item \textbf{last:} If the token is the last token in the sequence
+\item \textbf{A relative position value} (as an integer between 0 and 10) if the token is in the middle somewhere
+\end{compactitem}
+The relative position is calculated as a coarse-grained proportion: the index of the token divided by the number of tokens and adjusted by an absolute level of precision (for example, 0 to 10). As an example, a token in the middle of a sequence of 20 tokens would receive the value 5.
+
+By exposing the model to this positional information, the feature helps the model learn to recognize in which portions of a reference string one will most likely discover specific types of information. This can be extremely helpful in free-form or otherwise variably styled references, where even the formatting cannot give sufficient indication for field separation.
+
+\subsubsection{Punctuation Feature}
+The punctuation feature recognizes the presence and type of punctuation in a token. Punctuation will generally play a structural role in citation strings, separating fields or designating formatting conventions. For example, colons will separate titles and subtitles, periods will designate abbreviations, and hyphens will denote ranges like page numbers or dates.
+The feature looks at each token and labels it based on the punctuation that it contains:
+\begin{compactitem}
+\item \textbf{none:} The token does not have any punctuation.
+\item \textbf{colon:} The token contains a colon (\texttt{:}), which is used for title or subtitle delineation.
+\item \textbf{hyphen:} The token contains a hyphen or dash, which can indicate a range (i.e., \texttt{123–145}) or be part of a compound word.
+\item \textbf{period:} The token contains a period (\texttt{.}), which can indicate abbreviations or sentence finality.
+\item \textbf{amp:} The token has an ampersand (\texttt{\&}), often used to join author names (e.g., \texttt{Smith \& Johnson}).
+\item \textbf{other:} The token has punctuation not in one of the above classes.
+\end{compactitem}
+By capturing these distinctions, the punctuation feature provides useful cues to token boundaries, field separators, and potential abbreviations — all of which are useful to the model in annotating different parts of a citation.
+
+\subsubsection{Terminal Feature}
+Terminal property identifies in which way a token is terminating, namely if it is terminating in punctuation, brackets, or quotes. In citations of bibliography, the punctuation a token is terminating in often signals the end of a field or the separation between units of meaning, e.g., the end of an author name, title, or publication date.
+This feature looks at the trailing characters of the token and categorizes it as one of four based on the quality of the ending punctuation it possesses:
+\begin{compactitem}
+\item \textbf{strong:} The token contains a strong punctuation mark such as a period (\texttt{.}), closing parenthesis (\texttt{)}), or square bracket (\texttt{]}), possibly followed by a quotation mark. These tend to mark the end of a field or sentence.
+\item \textbf{moderate:} The token is suffixed with a quotation or colon. It may be preceded by a lighter punctuation character at times. These may mark a transition, like the start of a subtitle or inline citation.
+\item \textbf{weak:} The token is preceded by a lighter punctuation character like a comma, semicolon, hyphen, or exclamation mark. These mark continuation but can still segment parts of a field.
+\item \textbf{none:} The token ends without any meaningful punctuation.
+\end{compactitem}
+For example:
+\begin{compactitem}
+\item \texttt{2023).} → \texttt{strong}
+\item \texttt{"Chapter 2:} → \texttt{moderate}
+\item \texttt{Vol. 5,} → \texttt{weak}
+\item \texttt{Science} → \texttt{none}
+\end{compactitem}
+By maintaining these distinctions, the terminal feature helps the model to learn where fields most likely begin or end, especially in citation styles where such patterns are not absolutely dictated by format but instead are a function of punctuation. It plays a silent but important role in improving the accuracy of token labelling across citation formats.
+\clearpage
+
+\subsection*{Summary of Handcrafted Features}
+The new hand-crafted features employed in this work are inspired by how reference parsing is addressed in AnyStyle~\cite{anystyle}, but are reworked and extended to more effectively meet the needs of modern neural models. They encode a dense array of linguistic, structural, and semantic cues — including orthographic features, token position, punctuation, character types, and semantic dictionaries. Each of these provides a different perspective on the reference string, and together they form a dense representation that allows accurate field labeling independent of citation style. Later, we evaluate the contribution of these features in isolation as well as in combination with embedding-based methods.
+\renewcommand{\arraystretch}{1.3}
+\begin{table}[ht]
+\centering
+\caption{Summary of handcrafted features used in the citation parsing model}
+\label{tab:handcrafted-features}
+\begin{tabular}{p{4cm}p{10cm}}
+\toprule
+\textbf{Feature} & \textbf{Description} \\
+\midrule
+\texttt{AffixFeature} & Extracts prefixes and suffixes from each token to detect morphological patterns and common abbreviations. \\
+\texttt{BracketsFeature} & Identifies tokens enclosed in or adjacent to brackets like \texttt{()}, \texttt{[]}, or \texttt{<>}, often used for years or references. \\
+\texttt{CanonicalFeature} & Produces a normalized lowercase version of the token without accents or formatting noise. \\
+\texttt{CapsFeature} & Classifies tokens based on capitalization, e.g., all-caps, initials, or lowercase. \\
+\texttt{CategoryFeature} & Returns the Unicode category of the first and last character, helping to detect punctuation, digits, or letters. \\
+\texttt{DictionaryFeature} & Checks if a token exists in domain-specific dictionaries: names, publishers, journals, or places. \\
+\texttt{KeywordFeature} & Matches tokens against keyword patterns to detect roles like editor, translator, journal, or date terms. \\
+\texttt{LocatorFeature} & Detects persistent identifiers like DOIs, URLs, PubMed IDs, and ISBNs. \\
+\texttt{NumberFeature} & Classifies numeric tokens (e.g., years, volumes, page ranges, Roman numerals) based on their structure. \\
+\texttt{PositionFeature} & Encodes the position of a token within the reference string (first, last, middle, etc.). \\
+\texttt{PunctuationFeature} & Identifies punctuation within a token (colon, hyphen, ampersand, etc.). \\
+\texttt{TerminalFeature} & Examines how a token ends to infer punctuation strength and field boundaries. \\
+\bottomrule
+\end{tabular}
+\end{table}
+\renewcommand{\arraystretch}{1.0}
+
+

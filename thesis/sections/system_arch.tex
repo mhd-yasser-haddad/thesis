@@ -1,0 +1,45 @@
+\section{System Architecture}
+The goal of this system is to convert unstructured reference strings into structured bibliographic metadata by the process of assigning each token with its corresponding semantic field (e.g., author, title, publisher, year). This task is framed as a sequence labeling problem, and the model learns to create field-level labels for a string of tokens to produce labeled output that can be consumed by digital libraries, citation indexes, or metadata extraction programs.
+The system architecture is composed of modular stages: input ingestion and preprocessing, hand-engineered feature extraction, contextual embedding generation, feature concatenation, and token-level sequence modeling with supervised learning models. The stages are designed to be extendable and flexible in order to facilitate exploration with various types of embeddings, feature sets, and model architectures.
+
+\subsection{Input and Dataset Constraints}
+The system uses the GIANT dataset~\cite{giant}, which is one of the largest annotated reference string corpora available in this field anywhere. The complete GIANT corpus is made up of more than 900 million citations covering thousands of scientific styles and topics. However, due to computational constraints, it was not possible to train models on the entire corpus. A random sample of 5 million citation strings was chosen to ensure high diversity among citation styles, fields, and languages. Effective experimentation was conducted at this scale while preserving the dataset’s challenging variability.
+All the strings in the dataset are first annotated in an XML-based hierarchical format that provides field-level segmentation, but it’s not directly compatible with the standard sequence labeling formats. The XML annotation has both the main labels mentioned previously and additional metadata or formatting tags that are not relevant to the core parsing task. As a processing step, the extra labels were removed, and the remaining of the string was to a flat, token-level BIO tagging scheme. In this scheme, every token is labeled as the beginning (B-) or inside (I-) of some field, or as outside (O) if it does not belong to an identified segment. This conversion was performed in order to get the data into a format that can be used with off-the-shelf sequence labeling models. Some of the last tags are B-Author, I-Title, B-Journal, and B-Year. By using BIO encoding, the models are able to learn fixed field boundaries in citation strings, even across highly varying formatting styles.
+
+\subsection{Preprocessing and Tokenization}
+Raw reference strings can be different in the way they’re formatted, their punctuation, and the language, which makes preprocessing an important step. The tokenization method used in the system is whitespace-sensitive, punctuation-sensitive, and character pattern-sensitive. This makes sure that tokens like initials, abbreviations, hyphenated names, volume/issue numbers, and DOIs are appropriately separated and paired with the correct label.
+All the special characters and punctuation are kept unless otherwise filtered because they can have essential roles in delimiting fields. For instance, the presence of parentheses for a year, or quotation marks for a title, often serves as an implicit indicator that is useful to handcrafted features as well as learned representations.
+
+\subsection{Feature Extraction}
+One of the innovations of this system lies in its use of hand-engineered features inspired by the AnyStyle~\cite{anystyle} reference parsing framework. AnyStyle has been proven to perform well with lightweight CRF models that are guided by feature sets that are carefully crafted by hand. In this project, the same strategy is followed, and features that are domain-aware and structurally informative are derived.
+The feature space includes:
+\begin{description}
+\item[Orthographic features:] capitalization, digits, punctuation types.
+\item[Lexical cues:] dictionary matches on publication names, author names, or publication types that are common.
+\item[Positional features:] token position from the start/end of the string, section, position.
+\item[Contextual features:] features from the preceding and following tokens.
+\end{description}
+These are generated for each token within the reference string and encoded into a sparse vector format. They are primarily used for adding domain-specific patterns into the learning process, especially useful for rare citation styles and unusual formatting.
+
+\subsection{Embedding Generation and Feature Fusion}
+In addition to hand-engineered features, the system uses contextual embeddings to acquire deeper semantic and syntactic relationships. Two embedding methods are explored:
+\begin{enumerate}
+\item Byte-Pair Encoding (BPE)~\cite{bpemb} embeddings: Subword embeddings that are robust to out-of-vocabulary, low-frequency, or unknown words. BPE is found to be beneficial in bibliography information, where there are many domain- or author-related words with low frequencies.
+\item BERT~\cite{2019-bert} embeddings: Pre-trained contextual embeddings based on the Transformer architecture. BERT captures long-range dependencies and subtle meaning from the entire sentence context. Its success in numerous NLP applications encourages its application in this reference parsing pipeline.
+\end{enumerate}
+These embeddings can be used individually or combined with the hand-engineered features to produce a joint token representation. This combination enables the system to take advantage of both data-driven learning and domain-guided structure, making use of both approaches.
+
+\subsection{Sequence Labeling and Output}
+The final step of the system is sequence labeling, in which the token representations are input into one of the supervised models:
+\begin{itemize}
+\item Conditional Random Fields (CRF)~\cite{crf2001}: A strong baseline for structured prediction, especially with hand-engineered features.
+\item BiLSTM + CRF: A deep learning model that captures bidirectional context and combines it with a structured output layer.
+\end{itemize}
+These models are trained using annotated reference strings to learn the transition patterns between labels and to predict the correct field label for each token. The output is a sequence in which each token is marked up with its label.
+
+\begin{figure}[ht]
+    \centering
+    \input{./figures/fig-system-architecture.tex}
+    \caption{System architecture for reference string parsing.}
+    \label{fig:system-architecture}
+\end{figure}

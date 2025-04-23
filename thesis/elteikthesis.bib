@@ -1,0 +1,414 @@
+@inproceedings{councill-etal-2008-parscit,
+    title = "{P}ars{C}it: an Open-source {CRF} Reference String Parsing Package",
+    author = "Councill, Isaac  and
+      Giles, C. Lee  and
+      Kan, Min-Yen",
+    editor = "Calzolari, Nicoletta  and
+      Choukri, Khalid  and
+      Maegaard, Bente  and
+      Mariani, Joseph  and
+      Odijk, Jan  and
+      Piperidis, Stelios  and
+      Tapias, Daniel",
+    booktitle = "Proceedings of the Sixth International Conference on Language Resources and Evaluation ({LREC}`08)",
+    month = may,
+    year = "2008",
+    address = "Marrakech, Morocco",
+    publisher = "European Language Resources Association (ELRA)",
+    url = "https://aclanthology.org/L08-1291/",
+    abstract = "We describe ParsCit, a freely available, open-source implementation of a reference string parsing package. At the core of ParsCit is a trained conditional random field (CRF) model used to label the token sequences in the reference string. A heuristic model wraps this core with added functionality to identify reference strings from a plain text file, and to retrieve the citation contexts. The package comes with utilities to run it as a web service or as a standalone utility. We compare ParsCit on three distinct reference string datasets and show that it compares well with other previously published work."
+}
+
+@article{prasad2018neuralparscit,
+  author    = {Animesh Prasad and Manpreet Kaur and Min-Yen Kan},
+  title     = {Neural ParsCit: A Deep Learning-Based Reference String Parser},
+  journal   = {International Journal on Digital Libraries},
+  volume    = {19},
+  number    = {4},
+  pages     = {323--337},
+  year      = {2018},
+  doi       = {10.1007/s00799-018-0242-1},
+  url       = {https://doi.org/10.1007/s00799-018-0242-1}
+}
+
+@Article{ArchComapre,
+AUTHOR = {Cuéllar Hidalgo, Rodrigo and Pinto Elías, Raúl and Torres-Moreno, Juan-Manuel and Vergara Villegas , Osslan Osiris and Reyes Salgado, Gerardo and Magadán Salazar, Andrea},
+TITLE = {Neural Architecture Comparison for Bibliographic Reference Segmentation: An Empirical Study},
+JOURNAL = {Data},
+VOLUME = {9},
+YEAR = {2024},
+NUMBER = {5},
+ARTICLE-NUMBER = {71},
+URL = {https://www.mdpi.com/2306-5729/9/5/71},
+ISSN = {2306-5729},
+ABSTRACT = {In the realm of digital libraries, efficiently managing and accessing scientific publications necessitates automated bibliographic reference segmentation. This study addresses the challenge of accurately segmenting bibliographic references, a task complicated by the varied formats and styles of references. Focusing on the empirical evaluation of Conditional Random Fields (CRF), Bidirectional Long Short-Term Memory with CRF (BiLSTM + CRF), and Transformer Encoder with CRF (Transformer + CRF) architectures, this research employs Byte Pair Encoding and Character Embeddings for vector representation. The models underwent training on the extensive Giant corpus and subsequent evaluation on the Cora Corpus to ensure a balanced and rigorous comparison, maintaining uniformity across embedding layers, normalization techniques, and Dropout strategies. Results indicate that the BiLSTM + CRF architecture outperforms its counterparts by adeptly handling the syntactic structures prevalent in bibliographic data, achieving an F1-Score of 0.96. This outcome highlights the necessity of aligning model architecture with the specific syntactic demands of bibliographic reference segmentation tasks. Consequently, the study establishes the BiLSTM + CRF model as a superior approach within the current state-of-the-art, offering a robust solution for the challenges faced in digital library management and scholarly communication.},
+DOI = {10.3390/data9050071}
+}
+
+@ARTICLE{HMM1165342,
+  author={Rabiner, L. and Juang, B.},
+  journal={IEEE ASSP Magazine}, 
+  title={An introduction to hidden Markov models}, 
+  year={1986},
+  volume={3},
+  number={1},
+  pages={4-16},
+  keywords={Hidden Markov models;Linear systems;Speech processing;Speech recognition;Mathematical model;Optimization methods;Pattern matching;Time varying systems;Fluctuations},
+  doi={10.1109/MASSP.1986.1165342}
+}
+
+@inproceedings{crf2001,
+author = {Lafferty, John D. and McCallum, Andrew and Pereira, Fernando C. N.},
+title = {Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data},
+year = {2001},
+isbn = {1558607781},
+publisher = {Morgan Kaufmann Publishers Inc.},
+address = {San Francisco, CA, USA},
+booktitle = {Proceedings of the Eighteenth International Conference on Machine Learning},
+pages = {282–289},
+numpages = {8},
+series = {ICML '01}
+}
+
+@misc{citeseerx,
+  author       = {{CiteSeerX}},
+  title        = {CiteSeerX: Scientific Literature Digital Library and Search Engine},
+  year         = {2024},
+  url          = {https://citeseerx.ist.psu.edu},
+  note         = {Accessed: 2025-04-17}
+}
+
+@misc{anystyle,
+  author       = {Sylvester Keil},
+  title        = {AnyStyle: A Parser for Bibliographic References},
+  year         = {2025},
+  url          = {https://anystyle.io/},
+  note         = {Accessed: 2025-04-18}
+}
+
+@inproceedings{grobid,
+author = {Lopez, Patrice},
+year = {2009},
+month = {09},
+pages = {473-474},
+title = {GROBID: Combining Automatic Bibliographic Data Recognition and Term Extraction for Scholarship Publications},
+volume = {5714},
+isbn = {978-3-642-04345-1},
+doi = {10.1007/978-3-642-04346-8_62}
+}
+
+@inproceedings{opensourcebib,
+author = {Tkaczyk, Dominika and Collins, Andrew and Sheridan, Paraic and Beel, Joeran},
+year = {2018},
+month = {05},
+pages = {99-108},
+title = {Machine Learning vs. Rules and Out-of-the-Box vs. Retrained: An Evaluation of Open-Source Bibliographic Reference and Citation Parsers},
+doi = {10.1145/3197026.3197048}
+}
+
+@unknown{Syntheticvreal,
+author = {Grennan, Mark and Beel, Joeran},
+year = {2020},
+month = {04},
+pages = {},
+title = {Synthetic vs. Real Reference Strings for Citation Parsing, and the Importance of Re-training and Out-Of-Sample Data for Meaningful Evaluations: Experiments with GROBID, GIANT and Cora},
+doi = {10.48550/arXiv.2004.10410}
+}
+
+@incollection{jain2023entityextraction,
+  author    = {Vidhi Jain and Niyati Baliyan and Shammy Kumar},
+  title     = {Machine Learning Approaches for Entity Extraction from Citation Strings},
+  booktitle = {Lecture Notes in Electrical Engineering: Decision Intelligence},
+  publisher = {Springer Nature Singapore},
+  year      = {2023},
+  pages     = {287--297},
+  doi       = {10.1007/978-981-99-5997-6_25},
+  url       = {https://ouci.dntb.gov.ua/en/works/9Zwj6R37/},
+  note      = {Accessed: 2025-04-18}
+}
+
+@article{annotatedcorpus,
+    doi = {10.1371/journal.pone.0280637},
+    author = {Choi, Wonjun AND Yoon, Hwa-Mook AND Hyun, Mi-Hwan AND Lee, Hye-Jin AND Seol, Jae-Wook AND Lee, Kangsan Dajeong AND Yoon, Young Joon AND Kong, Hyesoo},
+    journal = {PLOS ONE},
+    publisher = {Public Library of Science},
+    title = {Building an annotated corpus for automatic metadata extraction from multilingual journal article references},
+    year = {2023},
+    month = {01},
+    volume = {18},
+    url = {https://doi.org/10.1371/journal.pone.0280637},
+    pages = {1-22},
+    abstract = {Bibliographic references containing citation information of academic literature play an important role as a medium connecting earlier and recent studies. As references contain machine-readable metadata such as author name, title, or publication year, they have been widely used in the field of citation information services including search services for scholarly information and research trend analysis. Many institutions around the world manually extract and continuously accumulate reference metadata to provide various scholarly services. However, manually collection of reference metadata every year continues to be a burden because of the associated cost and time consumption. With the accumulation of a large volume of academic literature, several tools, including GROBID and CERMINE, that automatically extract reference metadata have been released. However, these tools have some limitations. For example, they are only applicable to references written in English, the types of extractable metadata are limited for each tool, and the performance of the tools is insufficient to replace the manual extraction of reference metadata. Therefore, in this study, we focused on constructing a high-quality corpus to automatically extract metadata from multilingual journal article references. Using our constructed corpus, we trained and evaluated a BERT-based transfer-learning model. Furthermore, we compared the performance of the BERT-based model with that of the existing model, GROBID. Currently, our corpus contains 3,815,987 multilingual references, mainly in English and Korean, with labels for 13 different metadata types. According to our experiment, the BERT-based model trained using our corpus showed excellent performance in extracting metadata not only from journal references written in English but also in other languages, particularly Korean. This corpus is available at http://doi.org/10.23057/47.},
+    number = {1},
+
+}
+
+@misc{cora1999,
+title = "Digital libraries and autonomous citation indexing",
+abstract = "The Web promises to make more scientific articles more easily available. However, scientific literature on the Web remains remarkably disorganized. One way to improve this is through citation indexing. Autonomous citation index (ACI) completely automates the citation indexing process without requiring any extra effort from authors or institutions. In addition, ACI improves on other technologies by extracting and making the context of citation easy to access.",
+author = "Steve Lawrence and Giles, {C. Lee} and Kurt Bollacker",
+year = "1999",
+month = "06",
+doi = "10.1109/2.769447",
+language = "English (US)",
+volume = "32",
+pages = "67--71",
+journal = "Computer",
+issn = "0018-9162",
+publisher = "IEEE Computer Society",
+}
+
+@article{cermine,
+author = {Tkaczyk, Dominika and Szostek, Paweł and Fedoryszak, Mateusz and Dendek, Piotr and Bolikowski, Łukasz},
+year = {2015},
+month = {07},
+pages = {},
+title = {CERMINE: automatic extraction of structured metadata from scientific literature},
+volume = {18},
+journal = {International Journal on Document Analysis and Recognition (IJDAR)},
+doi = {10.1007/s10032-015-0249-8}
+}
+
+@inproceedings{bibpro,
+author = {Chen, Chien-Chih and Yang, Kai-Hsiang and Kao, Hung-Yu and Ho, Jan-Ming},
+year = {2008},
+month = {01},
+pages = {1175-1180},
+title = {BibPro: A Citation Parser Based on Sequence Alignment Techniques},
+doi = {10.1109/WAINA.2008.125}
+}
+
+@inproceedings{giant,
+  added-at = {2023-03-10T00:00:00.000+0100},
+  author = {Grennan, Mark and Schibel, Martin and Collins, Andrew and Beel, Joeran},
+  biburl = {https://www.bibsonomy.org/bibtex/275a6354c54310581d273de8bd5708ecc/dblp},
+  booktitle = {AICS},
+  editor = {Curry, Edward and Keane, Mark T. and Ojo, Adegboyega and Salwala, Dhaval},
+  ee = {https://ceur-ws.org/Vol-2563/aics_25.pdf},
+  interhash = {30992443eb3d56d0ecae003ea31a7859},
+  intrahash = {75a6354c54310581d273de8bd5708ecc},
+  keywords = {dblp},
+  pages = {260-271},
+  publisher = {CEUR-WS.org},
+  series = {CEUR Workshop Proceedings},
+  timestamp = {2024-04-09T15:56:22.000+0200},
+  title = {GIANT: The 1-Billion Annotated Synthetic Bibliographic-Reference-String Dataset for Deep Citation Parsing.},
+  url = {http://dblp.uni-trier.de/db/conf/aics/aics2019.html#GrennanSCB19},
+  volume = 2563,
+  year = 2019
+}
+
+@misc{cora1999,
+  author       = {Seymore, Kurt and McCallum, Andrew and Rosenfeld, Ronald},
+  title        = {CORA: Research Paper Search Engine and Dataset},
+  year         = {1999},
+  howpublished = {\url{https://people.cs.umass.edu/~mccallum/data.html}},
+  note         = {Accessed: 2025-04-18}
+}
+
+@InProceedings{ParsRec,
+author = {Tkaczyk, Dominika and Gupta, Rohit and Cinti, Riccardo and Beel, Joeran},
+title = {ParsRec: A Novel Meta-Learning Approach to Recommending Bibliographic Reference Parsers},
+booktitle = {26th Irish Conference on Artificial Intelligence and Cognitive Science (AICS)},
+year = {2018},
+volume = {5},
+number = {1},
+pages = {31–42},
+}
+
+@article{contrastive,
+title = {Enhancing bibliographic reference parsing with contrastive learning and prompt learning},
+journal = {Engineering Applications of Artificial Intelligence},
+volume = {133},
+pages = {108548},
+year = {2024},
+issn = {0952-1976},
+doi = {https://doi.org/10.1016/j.engappai.2024.108548},
+url = {https://www.sciencedirect.com/science/article/pii/S0952197624007061},
+author = {Zhen Yin and Shenghua Wang},
+keywords = {Contrastive learning, Prompt learning, Information extraction, Bibliographic reference},
+abstract = {Bibliographic references, typically comprising author names, journal titles, paper titles, and publication dates, play a vital role in academic research. Accurately identifying these structured pieces of information from references is a crucial step in developing intelligent bibliographic management systems. However, existing methods often rely on extensive high-quality training data. To mitigate the reliance on extensive training data, we propose a method that integrates prompt learning and contrastive learning for extracting structured information from bibliographic references, named CONT_Prompt_ParseRef. This approach aims to utilize contrastive learning to deepen the understanding of different metadata label types and employ prompt learning to provide specific guidelines for processing and recognition. We constructed a dataset comprising 12,000 samples, available in both Chinese and English versions. The experimental results on this bilingual dataset demonstrate the model's superior performance over existing techniques. Notably, CONT_Prompt_ParseRef shows remarkable robustness in low-resource environments, particularly in scenarios with limited training data, both contrastive and prompt learning play pivotal roles in label extraction from bibliographic references. The ablation study illustrates that omitting either component leads to a decline in performance, with contrastive learning being slightly more influential.}
+}
+
+@inproceedings{bpemb,
+    title = "{BPE}mb: Tokenization-free Pre-trained Subword Embeddings in 275 Languages",
+    author = "Heinzerling, Benjamin  and
+      Strube, Michael",
+    editor = "Calzolari, Nicoletta  and
+      Choukri, Khalid  and
+      Cieri, Christopher  and
+      Declerck, Thierry  and
+      Goggi, Sara  and
+      Hasida, Koiti  and
+      Isahara, Hitoshi  and
+      Maegaard, Bente  and
+      Mariani, Joseph  and
+      Mazo, H{\'e}l{\`e}ne  and
+      Moreno, Asuncion  and
+      Odijk, Jan  and
+      Piperidis, Stelios  and
+      Tokunaga, Takenobu",
+    booktitle = "Proceedings of the Eleventh International Conference on Language Resources and Evaluation ({LREC} 2018)",
+    month = {05},
+    year = "2018",
+    address = "Miyazaki, Japan",
+    publisher = "European Language Resources Association (ELRA)",
+    url = "https://aclanthology.org/L18-1473/"
+}
+
+@inproceedings{2019-bert,
+    title = "{BERT}: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+    author = "Devlin, Jacob  and
+      Chang, Ming-Wei  and
+      Lee, Kenton  and
+      Toutanova, Kristina",
+    editor = "Burstein, Jill  and
+      Doran, Christy  and
+      Solorio, Thamar",
+    booktitle = "Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)",
+    month = {06},
+    year = "2019",
+    address = "Minneapolis, Minnesota",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/N19-1423/",
+    doi = "10.18653/v1/N19-1423",
+    pages = "4171--4186",
+    abstract = "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7{\%} (4.6{\%} absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+}
+
+@inproceedings{glove,
+    title = "{G}lo{V}e: Global Vectors for Word Representation",
+    author = "Pennington, Jeffrey  and
+      Socher, Richard  and
+      Manning, Christopher",
+    editor = "Moschitti, Alessandro  and
+      Pang, Bo  and
+      Daelemans, Walter",
+    booktitle = "Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing ({EMNLP})",
+    month = {10},
+    year = "2014",
+    address = "Doha, Qatar",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/D14-1162/",
+    doi = "10.3115/v1/D14-1162",
+    pages = "1532--1543"
+}
+
+@article{bojanowski-enriching,
+    title = "Enriching Word Vectors with Subword Information",
+    author = "Bojanowski, Piotr  and
+      Grave, Edouard  and
+      Joulin, Armand  and
+      Mikolov, Tomas",
+    editor = "Lee, Lillian  and
+      Johnson, Mark  and
+      Toutanova, Kristina",
+    journal = "Transactions of the Association for Computational Linguistics",
+    volume = "5",
+    year = "2017",
+    address = "Cambridge, MA",
+    publisher = "MIT Press",
+    url = "https://aclanthology.org/Q17-1010/",
+    doi = "10.1162/tacl_a_00051",
+    pages = "135--146",
+    abstract = "Continuous word representations, trained on large unlabeled corpora are useful for many natural language processing tasks. Popular models that learn such representations ignore the morphology of words, by assigning a distinct vector to each word. This is a limitation, especially for languages with large vocabularies and many rare words. In this paper, we propose a new approach based on the skipgram model, where each word is represented as a bag of character n-grams. A vector representation is associated to each character n-gram; words being represented as the sum of these representations. Our method is fast, allowing to train models on large corpora quickly and allows us to compute word representations for words that did not appear in the training data. We evaluate our word representations on nine different languages, both on word similarity and analogy tasks. By comparing to recently proposed morphological word representations, we show that our vectors achieve state-of-the-art performance on these tasks."
+}
+
+@article{gpt-2018,
+  title={Improving Language Understanding by Generative Pre-Training},
+  author={Radford, Alec and Narasimhan, Karthik and Salimans, Tim and Sutskever, Ilya},
+  year={2018},
+  publisher={OpenAI}
+}
+
+@inproceedings{elmo,
+    title = "Deep Contextualized Word Representations",
+    author = "Peters, Matthew E.  and
+      Neumann, Mark  and
+      Iyyer, Mohit  and
+      Gardner, Matt  and
+      Clark, Christopher  and
+      Lee, Kenton  and
+      Zettlemoyer, Luke",
+    editor = "Walker, Marilyn  and
+      Ji, Heng  and
+      Stent, Amanda",
+    booktitle = "Proceedings of the 2018 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long Papers)",
+    month = {06},
+    year = "2018",
+    address = "New Orleans, Louisiana",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/N18-1202/",
+    doi = "10.18653/v1/N18-1202",
+    pages = "2227--2237",
+    abstract = "We introduce a new type of deep contextualized word representation that models both (1) complex characteristics of word use (e.g., syntax and semantics), and (2) how these uses vary across linguistic contexts (i.e., to model polysemy). Our word vectors are learned functions of the internal states of a deep bidirectional language model (biLM), which is pre-trained on a large text corpus. We show that these representations can be easily added to existing models and significantly improve the state of the art across six challenging NLP problems, including question answering, textual entailment and sentiment analysis. We also present an analysis showing that exposing the deep internals of the pre-trained network is crucial, allowing downstream models to mix different types of semi-supervision signals."
+}
+
+@inproceedings{attention-2017,
+ author = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, \L ukasz and Polosukhin, Illia},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {I. Guyon and U. Von Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
+ pages = {6000-6010},
+ publisher = {Curran Associates, Inc.},
+ title = {Attention is All you Need},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf},
+ volume = {30},
+ year = {2017}
+}
+
+@article{wordpiece,
+  title={Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation},
+  author={Wu, Yonghui and Schuster, Mike and Chen, Zhifeng and Le, Quoc V. and Norouzi, Mohammad and Macherey, Wolfgang and Krikun, Maxim and Cao, Yuan and Gao, Qin and Macherey, Klaus and Klingner, Jeff and Shah, Apurva and Johnson, Melvin and Liu, Xiaobing and Gouws, Stephan and Kato, Yoshikiyo and Kudo, Taku and Kazawa, Hideto and Stevens, Keith and Kurian, George and Patil, Nishant and Wang, Wei and Young, Cliff and Smith, Jason and Riesa, Jason and Rudnick, Alex and Vinyals, Oriol and Corrado, Greg and Hughes, Macduff and Dean, Jeffrey},
+  journal={arXiv preprint arXiv:1609.08144},
+  year={2016},
+  url={https://arxiv.org/abs/1609.08144}
+}
+
+@misc{pythoncrfsuite,
+  author = {Takahashi, Shintaro},
+  title = {python-crfsuite: Python binding for CRFsuite},
+  year = {2015},
+  howpublished = {\url{https://github.com/scrapinghub/python-crfsuite}},
+  note = {Accessed: 2025-04-19}
+}
+
+@misc{torchcrf,
+  author = {Kurniawan, Kamal},
+  title = {torchcrf: Conditional Random Field for PyTorch},
+  year = {2018},
+  howpublished = {\url{https://github.com/kmkurn/pytorch-crf}},
+  note = {Accessed: 2025-04-19}
+}
+
+@article{lstm,
+    author = {Hochreiter, Sepp and Schmidhuber, Jürgen},
+    title = {Long Short-Term Memory},
+    journal = {Neural Computation},
+    volume = {9},
+    number = {8},
+    pages = {1735-1780},
+    year = {1997},
+    month = {11},
+    abstract = {Learning to store information over extended time intervals by recurrent backpropagation takes a very long time, mostly because of insufficient, decaying error backflow. We briefly review Hochreiter's (1991) analysis of this problem, then address it by introducing a novel, efficient, gradient based method called long short-term memory (LSTM). Truncating the gradient where this does not do harm, LSTM can learn to bridge minimal time lags in excess of 1000 discrete-time steps by enforcing constant error flow through constant error carousels within special units. Multiplicative gate units learn to open and close access to the constant error flow. LSTM is local in space and time; its computational complexity per time step and weight is O. 1. Our experiments with artificial data involve local, distributed, real-valued, and noisy pattern representations. In comparisons with real-time recurrent learning, back propagation through time, recurrent cascade correlation, Elman nets, and neural sequence chunking, LSTM leads to many more successful runs, and learns much faster. LSTM also solves complex, artificial long-time-lag tasks that have never been solved by previous recurrent network algorithms.},
+    issn = {0899-7667},
+    doi = {10.1162/neco.1997.9.8.1735},
+    url = {https://doi.org/10.1162/neco.1997.9.8.1735},
+    eprint = {https://direct.mit.edu/neco/article-pdf/9/8/1735/813796/neco.1997.9.8.1735.pdf},
+}
+
+@article{bilstm,
+  title={Bidirectional LSTM-CRF Models for Sequence Tagging},
+  author={Zhiheng Huang and Wei Xu and Kai Yu},
+  journal={ArXiv},
+  year={2015},
+  volume={abs/1508.01991},
+  url={https://api.semanticscholar.org/CorpusID:12740621}
+}
+
+@misc{linq,
+  title        = {Linq-Embed-Mistral: Elevating Text Retrieval with Improved GPT Data Through Task-Specific Control and Quality Refinement},
+  author       = {Kim, Junseong and Lee, Seolhwa and Kwon, Jihoon and Gu, Sangmo and Kim, Yejin and Cho, Minkyung and Sohn, Jy-yong and Choi, Chanyeol},
+  howpublished = {\url{https://getlinq.com/blog/linq-embed-mistral}},
+  note         = {Linq AI Research Blog},
+  year         = {2024}
+}

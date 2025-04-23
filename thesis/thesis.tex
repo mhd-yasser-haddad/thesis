@@ -1,0 +1,156 @@
+\documentclass[
+	%parspace, % Add vertical space between paragraphs
+	%noindent, % No indentation of first lines in each paragraph
+	%nohyp, % No hyphenation of words
+	%twoside, % Double sided format
+	%draft, % Quicker draft compilation without rendering images
+	%final, % Set final to hide todos
+]{elteikthesis}[2024/04/26]
+
+% The minted package is also supported for source highlighting
+% See elteikthesis_minted.tex for example
+%\usepackage[newfloat]{minted}
+
+% Document's metadata
+\title{Enhancing Citation Reference Parsing: Integrating Formatted Information for Improved
+Accuracy} % title
+\date{2025} % year of defense
+
+% Author's metadata
+\author{MHD Yasser Haddad}
+\degree{Computer Science MSc}
+
+% Superivsor(s)' metadata
+\supervisor{Simonyi András} % internal supervisor's name
+\affiliation{Lecturer} % internal supervisor's affiliation
+
+% University's metadata
+\university{Eötvös Loránd University} % university's name
+\faculty{Faculty of Informatics} % faculty's name
+\department{Dept. of Artificial Intelligence.} % department's name
+\city{Budapest} % city
+\logo{elte_cimer_szines} % logo
+
+% Add bibliography file
+\addbibresource{elteikthesis.bib}
+
+% TikZ styles (external file)
+\input{tikzstyles.tex}
+
+\usepackage{booktabs} 
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% The document
+\begin{document}
+
+% Set document language
+%\documentlang{hungarian}
+\documentlang{english}
+
+% List of todos (not in the final document)
+%\listoftodos[\todolabel]
+
+% Title page (mandatory) 
+\maketitle
+% Topic declaration page (mandatory) - can also be attached instead
+%\includepdf{topicdeclaration.pdf}
+
+\chapter*{Declaration}
+\addcontentsline{toc}{chapter}{Declaration}
+
+I hereby declare that the thesis titled “Myocardial Perfusion Imaging with Vision Transformers” and the research presented within it are entirely my own original work. I further confirm the following:
+
+\begin{itemize} 
+	\item The research was conducted entirely or primarily during my candidature for a master's degree at Eötvös Loránd University. 
+	\item Any published work by others that I have consulted has been clearly cited. 
+	\item All direct quotations from other sources are properly acknowledged. 
+	\item All major sources of assistance have been duly credited. 
+	\item This thesis has not been submitted previously for any other degree or professional qualification. 
+\end{itemize}
+
+\vspace{1cm}
+\noindent
+Signed: MHD Yasser Haddad \\
+\vspace{0.2cm}
+Date: 21st April, 2025
+
+\vspace{0.5cm}
+\noindent
+Thank you all.
+
+\cleardoublepage
+
+% Table of contents (mandatory)
+\tableofcontents
+\cleardoublepage
+
+% Main content
+% Abstract (mandatory)
+\input{sections/intro.tex}
+\cleardoublepage
+
+\input{sections/related_work.tex}
+\cleardoublepage
+
+\input{sections/methodology.tex}
+\cleardoublepage
+
+\input{sections/results.tex}
+\cleardoublepage
+
+% \input{sections/user.tex}
+% \cleardoublepage
+
+% \input{sections/impl.tex}
+% \cleardoublepage
+
+% \input{sections/sum.tex}
+% \cleardoublepage
+
+% Acknowledgements (optional) - in case your thesis received funding or would like to express special thanks to someone
+\chapter*{\acklabel}
+\addcontentsline{toc}{chapter}{\acklabel}
+I would like to express my heartfelt gratitude to my supervisor, \textbf{Simonyi András}, for his continuous support and insightful guidance throughout the course of this research. His expertise was instrumental in shaping the project and bringing it to completion.
+I am also deeply thankful to the faculty and staff of the Department of Computer Science at Eötvös Loránd University, whose support and resources were essential to the successful execution of this work.
+Finally, I extend my appreciation to the open-source community and the developers whose tools and libraries were integral to the implementation of this project.
+
+% Appendices (optional) - useful for detailed information in long tables, many and/or large figures, etc.
+% \appendix
+% \input{sections/sim.tex}
+% \cleardoublepage
+
+% Bibliography (mandatory)
+\phantomsection
+\addcontentsline{toc}{chapter}{\biblabel}
+\printbibliography[title=\biblabel]
+\cleardoublepage
+
+% List of figures (optional) - useful over 3-5 figures
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstfigurelabel}
+\listoffigures
+\cleardoublepage
+
+% List of tables (optional) - useful over 3-5 tables
+\phantomsection
+\addcontentsline{toc}{chapter}{\lsttablelabel}
+\listoftables
+\cleardoublepage
+
+% List of algorithms (optional) - useful over 3-5 algorithms
+% \phantomsection
+% \addcontentsline{toc}{chapter}{\lstalgorithmlabel}
+% \listofalgorithms
+% \cleardoublepage
+ 
+% List of codes (optional) - useful over 3-5 code samples
+% \phantomsection
+% \addcontentsline{toc}{chapter}{\lstcodelabel}
+% \lstlistoflistings
+% \cleardoublepage
+
+% List of symbols (optional)
+%\printnomenclature
+
+\end{document}
