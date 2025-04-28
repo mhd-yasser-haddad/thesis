@@ -1731,6 +1731,91 @@
       \field{title}{Linq-Embed-Mistral: Elevating Text Retrieval with Improved GPT Data Through Task-Specific Control and Quality Refinement}
       \field{year}{2024}
     \endentry
+    \entry{sanh2019distilbert}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=b17a6e4a2e8a51a0d77017d50c2ef700}{%
+           family={Sanh},
+           familyi={S\bibinitperiod},
+           given={Victor},
+           giveni={V\bibinitperiod}}}%
+        {{hash=4996c576ebaf91c8655cee3341764e3b}{%
+           family={Debut},
+           familyi={D\bibinitperiod},
+           given={Lysandre},
+           giveni={L\bibinitperiod}}}%
+        {{hash=79bf176bccb31f7489fcf1895b225764}{%
+           family={Chaumond},
+           familyi={C\bibinitperiod},
+           given={Julien},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c34c67badfd5b3624027e9c8c77a69f6}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c45110f1218dd76df03ef800db8a970}
+      \strng{fullhash}{dc0afc633047d6fca100f460cf89f831}
+      \strng{fullhashraw}{dc0afc633047d6fca100f460cf89f831}
+      \strng{bibnamehash}{9c45110f1218dd76df03ef800db8a970}
+      \strng{authorbibnamehash}{9c45110f1218dd76df03ef800db8a970}
+      \strng{authornamehash}{9c45110f1218dd76df03ef800db8a970}
+      \strng{authorfullhash}{dc0afc633047d6fca100f460cf89f831}
+      \strng{authorfullhashraw}{dc0afc633047d6fca100f460cf89f831}
+      \field{extraname}{1}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ArXiv}
+      \field{title}{DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter}
+      \field{volume}{abs/1910.01108}
+      \field{year}{2019}
+    \endentry
+    \entry{distilbert-multilingual}{misc}{}{}
+      \name{author}{4}{}{%
+        {{hash=b17a6e4a2e8a51a0d77017d50c2ef700}{%
+           family={Sanh},
+           familyi={S\bibinitperiod},
+           given={Victor},
+           giveni={V\bibinitperiod}}}%
+        {{hash=4996c576ebaf91c8655cee3341764e3b}{%
+           family={Debut},
+           familyi={D\bibinitperiod},
+           given={Lysandre},
+           giveni={L\bibinitperiod}}}%
+        {{hash=79bf176bccb31f7489fcf1895b225764}{%
+           family={Chaumond},
+           familyi={C\bibinitperiod},
+           given={Julien},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c34c67badfd5b3624027e9c8c77a69f6}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Hugging Face}%
+      }
+      \strng{namehash}{9c45110f1218dd76df03ef800db8a970}
+      \strng{fullhash}{dc0afc633047d6fca100f460cf89f831}
+      \strng{fullhashraw}{dc0afc633047d6fca100f460cf89f831}
+      \strng{bibnamehash}{9c45110f1218dd76df03ef800db8a970}
+      \strng{authorbibnamehash}{9c45110f1218dd76df03ef800db8a970}
+      \strng{authornamehash}{9c45110f1218dd76df03ef800db8a970}
+      \strng{authorfullhash}{dc0afc633047d6fca100f460cf89f831}
+      \strng{authorfullhashraw}{dc0afc633047d6fca100f460cf89f831}
+      \field{extraname}{2}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://huggingface.co/distilbert/distilbert-base-multilingual-cased}}
+      \field{note}{Accessed: 2025-04-25}
+      \field{title}{distilbert-base-multilingual-cased}
+      \field{year}{2019}
+    \endentry
     \entry{pythoncrfsuite}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=aa1f7a3f7a34fc1b4c6f63217e2c153e}{%
@@ -1855,8 +1940,8 @@
       \strng{authornamehash}{2f75424f8afa62a5d143e289d08f1665}
       \strng{authorfullhash}{2f75424f8afa62a5d143e289d08f1665}
       \strng{authorfullhashraw}{2f75424f8afa62a5d143e289d08f1665}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{ArXiv}

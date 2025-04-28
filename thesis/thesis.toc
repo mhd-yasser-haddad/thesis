@@ -52,16 +52,20 @@
 \select@language {english} \contentsline {section}{\numberline {3.5}Training and Evaluation Setup}{41}{section.3.5}%
 \select@language {english} \contentsline {subsection}{\numberline {3.5.1}CRFsuite Model}{41}{subsection.3.5.1}%
 \select@language {english} \contentsline {subsection}{\numberline {3.5.2}BiLSTM + CRF Model (Neural CRF)}{41}{subsection.3.5.2}%
-\select@language {english} \contentsline {chapter}{\numberline {4}Results}{43}{chapter.4}%
-\select@language {english} \contentsline {section}{\numberline {4.1}Evaluation Metrics}{43}{section.4.1}%
-\select@language {english} \contentsline {section}{\numberline {4.2}Model Comparison}{44}{section.4.2}%
-\select@language {english} \contentsline {subsection}{\numberline {4.2.1}CRF Configurations}{44}{subsection.4.2.1}%
-\select@language {english} \contentsline {subsection}{\numberline {4.2.2}BiLSTM + CRF}{45}{subsection.4.2.2}%
-\select@language {english} \contentsline {subsection}{\numberline {4.2.3}BERT-based CRF Model}{45}{subsection.4.2.3}%
-\select@language {english} \contentsline {subsection}{\numberline {4.2.4}Final Comparison of Best Model Variants}{46}{subsection.4.2.4}%
-\select@language {english} \contentsline {subsection}{\numberline {4.2.5}Analysis of Results}{47}{subsection.4.2.5}%
-\select@language {english} \contentsline {subsection}{\numberline {4.2.6}LLM Comparison}{49}{subsection.4.2.6}%
-\select@language {english} \contentsline {chapter}{Acknowledgements}{50}{chapter*.37}%
-\select@language {english} \contentsline {chapter}{Bibliography}{50}{section*.38}%
-\select@language {english} \contentsline {chapter}{List of Figures}{56}{section*.40}%
-\select@language {english} \contentsline {chapter}{List of Tables}{57}{section*.41}%
+\select@language {english} \contentsline {subsection}{\numberline {3.5.3}BERT-based CRF Model}{42}{subsection.3.5.3}%
+\select@language {english} \contentsline {chapter}{\numberline {4}Results}{44}{chapter.4}%
+\select@language {english} \contentsline {section}{\numberline {4.1}Evaluation Metrics}{44}{section.4.1}%
+\select@language {english} \contentsline {section}{\numberline {4.2}Model Comparison}{45}{section.4.2}%
+\select@language {english} \contentsline {subsection}{\numberline {4.2.1}CRF Configurations}{45}{subsection.4.2.1}%
+\select@language {english} \contentsline {subsection}{\numberline {4.2.2}BiLSTM + CRF}{46}{subsection.4.2.2}%
+\select@language {english} \contentsline {subsection}{\numberline {4.2.3}BERT-based CRF Model}{46}{subsection.4.2.3}%
+\select@language {english} \contentsline {subsection}{\numberline {4.2.4}Final Comparison of Best Model Variants}{47}{subsection.4.2.4}%
+\select@language {english} \contentsline {subsection}{\numberline {4.2.5}Analysis of Results}{48}{subsection.4.2.5}%
+\select@language {english} \contentsline {subsection}{\numberline {4.2.6}Comparison with External Systems}{50}{subsection.4.2.6}%
+\select@language {english} \contentsline {subsubsection}{Evaluation Against a Large Language Model (GPT-4o)}{50}{section*.37}%
+\select@language {english} \contentsline {subsubsection}{Comparison with External Published Work}{51}{section*.39}%
+\select@language {english} \contentsline {chapter}{\numberline {5}Conclusion}{53}{chapter.5}%
+\select@language {english} \contentsline {chapter}{Acknowledgements}{55}{chapter*.41}%
+\select@language {english} \contentsline {chapter}{Bibliography}{55}{section*.42}%
+\select@language {english} \contentsline {chapter}{List of Figures}{61}{section*.44}%
+\select@language {english} \contentsline {chapter}{List of Tables}{62}{section*.45}%

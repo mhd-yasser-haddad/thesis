@@ -2431,15 +2431,24 @@
     <bcf:citekey order="57" intorder="1">attention-2017</bcf:citekey>
     <bcf:citekey order="58" intorder="1">wordpiece</bcf:citekey>
     <bcf:citekey order="59" intorder="1">2019-bert</bcf:citekey>
-    <bcf:citekey order="60" intorder="1">linq</bcf:citekey>
-    <bcf:citekey order="61" intorder="1">crf2001</bcf:citekey>
-    <bcf:citekey order="62" intorder="1">pythoncrfsuite</bcf:citekey>
-    <bcf:citekey order="63" intorder="1">torchcrf</bcf:citekey>
-    <bcf:citekey order="64" intorder="1">lstm</bcf:citekey>
-    <bcf:citekey order="65" intorder="1">bilstm</bcf:citekey>
-    <bcf:citekey order="66" intorder="1">anystyle</bcf:citekey>
-    <bcf:citekey order="67" intorder="1">giant</bcf:citekey>
-    <bcf:citekey order="68" intorder="1">anystyle</bcf:citekey>
+    <bcf:citekey order="60" intorder="1">2019-bert</bcf:citekey>
+    <bcf:citekey order="61" intorder="1">2019-bert</bcf:citekey>
+    <bcf:citekey order="62" intorder="1">linq</bcf:citekey>
+    <bcf:citekey order="63" intorder="1">sanh2019distilbert</bcf:citekey>
+    <bcf:citekey order="64" intorder="1">2019-bert</bcf:citekey>
+    <bcf:citekey order="65" intorder="1">distilbert-multilingual</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">crf2001</bcf:citekey>
+    <bcf:citekey order="67" intorder="1">pythoncrfsuite</bcf:citekey>
+    <bcf:citekey order="68" intorder="1">torchcrf</bcf:citekey>
+    <bcf:citekey order="69" intorder="1">lstm</bcf:citekey>
+    <bcf:citekey order="70" intorder="1">bilstm</bcf:citekey>
+    <bcf:citekey order="71" intorder="1">anystyle</bcf:citekey>
+    <bcf:citekey order="72" intorder="1">giant</bcf:citekey>
+    <bcf:citekey order="73" intorder="1">anystyle</bcf:citekey>
+    <bcf:citekey order="74" intorder="1">ArchComapre</bcf:citekey>
+    <bcf:citekey order="75" intorder="1">ArchComapre</bcf:citekey>
+    <bcf:citekey order="76" intorder="1">ArchComapre</bcf:citekey>
+    <bcf:citekey order="77" intorder="1">ArchComapre</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

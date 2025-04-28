@@ -50,7 +50,7 @@ Benefits of BERT Embeddings:
 \begin{figure}[ht]
     \centering
     \input{./figures/bert.tex}
-    \caption{The BERT input representation: each token is represented as the sum of its token, segment, and positional embeddings.}
+    \caption[BERT Input Representation]{The BERT input representation: each token is represented as the sum of its token, segment, and positional embeddings. Inspired by the design shown in~\cite{2019-bert}.}
     \label{fig:bert-input}
 \end{figure}
 
@@ -60,4 +60,12 @@ While the original BERT model has been an essential architecture for natural lan
 
 In this work, rather than using the baseline BERT model~\cite{2019-bert}, we decided to use a modern BERT-style encoder from the Hugging Face leaderboard, specifically the Linq-Embed-Mistral model~\cite{linq}. The encoder is a fusion of the Mistral transformer backbone with simplified embedding tuning, offering dense high-quality representations well adapted to token-level tasks like reference parsing. The model was one of the top-performing multilingual text encoders and offered strong out-of-the-box performance in zero-shot or low-shot settings — a valuable property for parsing reference styles not directly seen at training time.
 The Linq-Embed-Mistral model was used in the same application as BPE or standard BERT embeddings, generating subword-level context embeddings for each token in a reference string.
+\newline
+\newline
+\textbf{DistilBERT: Lightweight Multilingual Embeddings}
+
+In addition to modern transformer architectures, we also experimented with using lighter and faster versions of substitutes to make token embeddings. DistilBERT~\cite{sanh2019distilbert} is a light version of the original BERT base model~\cite{2019-bert}, which is trained to retain most of BERT's performance with 40\% less model size, 60\% increased inference speed, while preserving nearly 97\% of its language knowledge capabilities.
+
+To conduct our experiments, we employed specifically the multilingual cased model of DistilBERT, by Hugging Face~\cite{distilbert-multilingual}. This is trained on the same data as mBERT (Multilingual BERT) and performs well over 100 languages. The multilingual cased DistilBERT provided compact, efficient representation that proved of immense value to handle citation data in many languages, preserving casing information in the process — essential to reference parsing since proper names, acronyms, and titles can significantly depend on capitalisation.
+In this paper, the DistilBERT embeddings were generated at the token level similar to Linq-Embed-Mistral or BPE, allowing us to contrast directly the impact of model architecture size as well as representational quality on the reference parsing task.
 

@@ -1,0 +1,43 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        ybar,
+        bar width=0.40cm,
+        width=\textwidth,
+        height=7cm,
+        enlarge x limits=0.2,
+        ylabel={Score},
+        ymin=0.75, ymax=1.0,
+        symbolic x coords={CRF (BPEmb+Hand), BiLSTM+CRF, CRF (BERT), GPT-4o},
+        xtick=data,
+        xticklabel style={text width=2.5cm, align=center},
+        nodes near coords,
+        nodes near coords align={vertical},
+        legend style={at={(0.5,-0.40)}, anchor=north, legend columns=-1},
+        xlabel={Model},
+        title={Weighted avg comparison of Precision, Recall, and F1-score with GPT-4o},
+    ]
+    
+    \addplot+[style={fill=blue!85}, bar shift=-0.85cm] coordinates {
+        (CRF (BPEmb+Hand),0.91) 
+        (BiLSTM+CRF,0.83) 
+        (CRF (BERT),0.92)
+        (GPT-4o,0.92)
+    };
+    
+    \addplot+[style={fill=red!85}, bar shift=0cm] coordinates {
+        (CRF (BPEmb+Hand),0.91) 
+        (BiLSTM+CRF,0.93) 
+        (CRF (BERT),0.94)
+        (GPT-4o,0.88)
+    };
+    
+    \addplot+[style={fill=orange!85}, bar shift=0.85cm] coordinates {
+        (CRF (BPEmb+Hand),0.91) 
+        (BiLSTM+CRF,0.87) 
+        (CRF (BERT),0.93)
+        (GPT-4o,0.89)
+    };
+    
+    \legend{Precision, Recall, F1-score}
+    \end{axis}
+\end{tikzpicture}

@@ -646,6 +646,15 @@ INPUT sections\results.tex
 INPUT .\figures\chart-comparison.tex
 INPUT .\figures\chart-comparison.tex
 INPUT figures\chart-comparison.tex
+INPUT .\figures\llm-comparison.tex
+INPUT .\figures\llm-comparison.tex
+INPUT figures\llm-comparison.tex
+INPUT .\figures\paper-comparison.tex
+INPUT .\figures\paper-comparison.tex
+INPUT figures\paper-comparison.tex
+INPUT .\sections\conclusion.tex
+INPUT .\sections\conclusion.tex
+INPUT sections\conclusion.tex
 INPUT .\thesis.lof
 INPUT .\thesis.lof
 INPUT thesis.lof
