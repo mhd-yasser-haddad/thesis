@@ -18,13 +18,21 @@ In the following sections, we describe each feature group in detail, beginning w
 \clearpage
 
 \subsection{Feature Integration}
-To merge learned and handcrafted knowledge, this project concatenates the output of pretrained embeddings with handcrafted feature embeddings. For models that consume dense representations (e.g., BiLSTM + CRF), every handcrafted feature is first assigned a separate vocabulary of its possible discrete values (e.g., prefixes, types of capitalization, punctuation types). These category values are then realized in trainable vectors by using a specialized nn.Embedding layers in PyTorch so that the model can best learn representations during training.
-The token-level final representation is created by concatenating:
-\begin{compactitem}
-\item A subword embedding (e.g., from BPEmb or BERT)
-\item A concatenated vector of learned embeddings for each handcrafted feature
-\end{compactitem}
-This resulting aggregated vector is then passed into the downstream neural model. For example, in the BiLSTM + CRF setup, the aggregated embedding is passed as input to the CRF layer.
+A key challenge in this work is integrating information from different levels of granularity: \textbf{subword-based embeddings} (e.g., BERT, BPEmb) and \textbf{word-level handcrafted features} (e.g., affix, capitalization, punctuation). This integration is handled differently depending on the model architecture.
 
-Conversely, using a default CRF implementation (e.g., using CRFsuite), the model does not take or require dense vector embeddings. Instead, it consumes sparse handcrafted features directly in the form of one-hot encoded tags. Thus, the integration step is omitted, and only the handcrafted features are fed into the CRF.
+\textbf{Neural Models (e.g., BiLSTM + CRF)}
+
+In models that consume dense vector representations, each input token is represented by combining learned contextual embeddings with structured handcrafted features:
+\begin{compactitem}
+\item \textbf{Subword Embeddings:} Tokens are passed through pretrained models such as BERT or BPEmb. These models tokenize words into subword units internally (e.g., “information” may be split into "in", "\#\#formation"). Since handcrafted features operate at the word level, we align the two by averaging the embeddings of subwords corresponding to each original word token. This produces a single subword-aware vector per token.
+\item \textbf{Handcrafted Features:} Each token also has categorical handcrafted features (e.g., prefix, caps type). Each of these is treated as a separate vocabulary and embedded using \texttt{nn.Embedding} layers in PyTorch. These embeddings are trained alongside the model.
+\end{compactitem}
+The two components are \textbf{aligned} in dimensionality: the subword embedding is passed through a BiLSTM layer, and the handcrafted feature embedding is projected via a linear layer to match the LSTM output’s dimensions. The two vectors are then added element-wise and passed to a CRF layer for structured prediction.
+
+\textbf{Sparse CRF Models (e.g., python-crfsuite)}
+
+In models like CRFsuite that do not support dense vector inputs, subword embeddings are converted to feature dictionaries. Each token's embedding is flattened and assigned feature names with numeric indices (e.g., \texttt{bert\_0\=0.123}). If two embedding sources are used (e.g., BERT and hand features), their features are merged using distinct prefixes. Handcrafted features, in this case, are also included as categorical string features.
+Since CRFsuite works with string-based sparse features, there is no need for alignment between the two embedding sources—each word is treated as a single token, and the embedding representation of a word that contains multiple subwords is averaged beforehand during preprocessing.
+
+This setup ensures that both contextual richness from deep embeddings and structural insight from handcrafted features are available to the model. Dense architectures learn the interaction between the two during training, while sparse CRFs receive both as complementary symbolic inputs.
 

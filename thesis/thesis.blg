@@ -1,17 +1,17 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
 [0] Config.pm:311> INFO - Logfile is 'thesis.blg'
-[100] biber-MSWIN64:340> INFO - === 
-[132] Biber.pm:420> INFO - Reading 'thesis.bcf'
-[234] Biber.pm:994> INFO - Found 33 citekeys in bib section 0
-[247] Biber.pm:4463> INFO - Processing section 0
-[259] Biber.pm:4654> INFO - Looking for bibtex file 'elteikthesis.bib' for section 0
-[312] bibtex.pm:1713> INFO - LaTeX decoding ...
-[377] bibtex.pm:1519> INFO - Found BibTeX data source 'elteikthesis.bib'
-[699] UCollate.pm:68> INFO - Overriding locale 'hungarian' defaults 'variable = shifted' with 'variable = non-ignorable'
-[699] UCollate.pm:68> INFO - Overriding locale 'hungarian' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[700] Biber.pm:4283> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'hungarian'
-[700] Biber.pm:4289> INFO - No sort tailoring available for locale 'hungarian'
-[726] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[759] bbl.pm:779> INFO - Output to thesis.bbl
-[759] Biber.pm:131> WARN - Duplicate entry key: 'cora1999' in file 'elteikthesis.bib', skipping ...
-[759] Biber.pm:133> INFO - WARNINGS: 1
+[106] biber-MSWIN64:340> INFO - === 
+[143] Biber.pm:420> INFO - Reading 'thesis.bcf'
+[260] Biber.pm:994> INFO - Found 34 citekeys in bib section 0
+[274] Biber.pm:4463> INFO - Processing section 0
+[287] Biber.pm:4654> INFO - Looking for bibtex file 'elteikthesis.bib' for section 0
+[343] bibtex.pm:1713> INFO - LaTeX decoding ...
+[395] bibtex.pm:1519> INFO - Found BibTeX data source 'elteikthesis.bib'
+[703] UCollate.pm:68> INFO - Overriding locale 'hungarian' defaults 'variable = shifted' with 'variable = non-ignorable'
+[703] UCollate.pm:68> INFO - Overriding locale 'hungarian' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[704] Biber.pm:4283> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'hungarian'
+[704] Biber.pm:4289> INFO - No sort tailoring available for locale 'hungarian'
+[733] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[768] bbl.pm:779> INFO - Output to thesis.bbl
+[768] Biber.pm:131> WARN - Duplicate entry key: 'cora1999' in file 'elteikthesis.bib', skipping ...
+[768] Biber.pm:133> INFO - WARNINGS: 1

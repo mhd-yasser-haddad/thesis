@@ -1,0 +1,35 @@
+\begin{tikzpicture}[node distance=0.7cm and 1.4cm, every node/.style={font=\small},
+    process/.style={rectangle, draw, minimum height=1cm, minimum width=2.5cm, fill=blue!10, text centered},
+    embedding/.style={rectangle, draw, minimum height=1cm, minimum width=2.5cm, fill=green!10, text centered},
+    loss/.style={rectangle, draw, minimum height=1cm, minimum width=3cm, fill=red!10, text centered},
+    arrow/.style={->, thick, >=Stealth}]
+
+% Input section
+\node[process] (input) {Input Reference String};
+\node[embedding, below=of input] (embed) {Embedding Layer};
+\node[process, below=of embed] (encoder) {Transformer Encoder};
+
+% Split branches
+\node[process, right=1cm of encoder] (prompt) {Prompt Learning Module};
+\node[process, left=1cm of encoder] (contrast) {Contrastive Learning Module};
+
+% Output heads
+\node[loss, below=of prompt] (promptloss) {Prompt Classification Loss};
+\node[loss, below=of contrast] (contrastloss) {Contrastive Loss};
+
+% Final prediction
+\node[process, below=2.5cm of encoder] (prediction) {Final Field Prediction};
+
+% Arrows
+\draw[arrow] (input) -- (embed);
+\draw[arrow] (embed) -- (encoder);
+\draw[arrow] (encoder) -- (prompt);
+\draw[arrow] (encoder) -- (contrast);
+\draw[arrow] (prompt) -- (promptloss);
+\draw[arrow] (contrast) -- (contrastloss);
+\draw[arrow] (encoder) -- (prediction);
+
+% Legends (optional)
+\node[align=center, font=\footnotesize, below=0.5cm of prediction] {Schematic diagram showing input embedding,\\ shared encoder, and parallel contrastive/prompt learning paths};
+
+\end{tikzpicture}

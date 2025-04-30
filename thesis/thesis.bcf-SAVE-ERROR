@@ -2401,76 +2401,49 @@
     <bcf:citekey order="20" intorder="1">cermine</bcf:citekey>
     <bcf:citekey order="21" intorder="1">bibpro</bcf:citekey>
     <bcf:citekey order="22" intorder="1">prasad2018neuralparscit</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">transparscit</bcf:citekey>
-    <bcf:citekey order="24" intorder="1">contrastive</bcf:citekey>
-    <bcf:citekey order="25" intorder="1">prasad2018neuralparscit</bcf:citekey>
-    <bcf:citekey order="26" intorder="1">ArchComapre</bcf:citekey>
-    <bcf:citekey order="27" intorder="1">giant</bcf:citekey>
-    <bcf:citekey order="28" intorder="1">cora1999</bcf:citekey>
-    <bcf:citekey order="29" intorder="1">ParsRec</bcf:citekey>
-    <bcf:citekey order="30" intorder="1">grobid</bcf:citekey>
-    <bcf:citekey order="31" intorder="1">anystyle</bcf:citekey>
-    <bcf:citekey order="32" intorder="1">giant</bcf:citekey>
-    <bcf:citekey order="33" intorder="1">anystyle</bcf:citekey>
-    <bcf:citekey order="34" intorder="1">bpemb</bcf:citekey>
-    <bcf:citekey order="35" intorder="1">2019-bert</bcf:citekey>
-    <bcf:citekey order="36" intorder="1">crf2001</bcf:citekey>
-    <bcf:citekey order="37" intorder="1">2019-bert</bcf:citekey>
-    <bcf:citekey order="38" intorder="1">anystyle</bcf:citekey>
-    <bcf:citekey order="39" intorder="1">bpemb</bcf:citekey>
-    <bcf:citekey order="40" intorder="1">2019-bert</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">contrastive</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">prasad2018neuralparscit</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">ArchComapre</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">giant</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">cora1999</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">ParsRec</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">grobid</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">anystyle</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">giant</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">anystyle</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">bpemb</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">2019-bert</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">crf2001</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">2019-bert</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">anystyle</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">bpemb</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">2019-bert</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">anystyle</bcf:citekey>
     <bcf:citekey order="41" intorder="1">anystyle</bcf:citekey>
-    <bcf:citekey order="42" intorder="1">anystyle</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">bpemb</bcf:citekey>
     <bcf:citekey order="43" intorder="1">bpemb</bcf:citekey>
     <bcf:citekey order="44" intorder="1">bpemb</bcf:citekey>
-    <bcf:citekey order="45" intorder="1">bpemb</bcf:citekey>
-    <bcf:citekey order="45" intorder="2">glove</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">glove</bcf:citekey>
     <bcf:citekey order="46" intorder="1">bpemb</bcf:citekey>
-    <bcf:citekey order="46" intorder="2">bojanowski-enriching</bcf:citekey>
-    <bcf:citekey order="47" intorder="1">bpemb</bcf:citekey>
-    <bcf:citekey order="48" intorder="1">2019-bert</bcf:citekey>
-    <bcf:citekey order="49" intorder="1">gpt-2018</bcf:citekey>
-    <bcf:citekey order="50" intorder="1">elmo</bcf:citekey>
-    <bcf:citekey order="51" intorder="1">attention-2017</bcf:citekey>
-    <bcf:citekey order="52" intorder="1">wordpiece</bcf:citekey>
-    <bcf:citekey order="53" intorder="1">2019-bert</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">bojanowski-enriching</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">bpemb</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">2019-bert</bcf:citekey>
+    <bcf:citekey order="50" intorder="1">gpt-2018</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">elmo</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">attention-2017</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">wordpiece</bcf:citekey>
     <bcf:citekey order="54" intorder="1">2019-bert</bcf:citekey>
     <bcf:citekey order="55" intorder="1">2019-bert</bcf:citekey>
-    <bcf:citekey order="56" intorder="1">linq</bcf:citekey>
-    <bcf:citekey order="57" intorder="1">sanh2019distilbert</bcf:citekey>
-    <bcf:citekey order="58" intorder="1">2019-bert</bcf:citekey>
-    <bcf:citekey order="59" intorder="1">distilbert-multilingual</bcf:citekey>
-    <bcf:citekey order="60" intorder="1">crf2001</bcf:citekey>
-    <bcf:citekey order="61" intorder="1">pythoncrfsuite</bcf:citekey>
-    <bcf:citekey order="62" intorder="1">torchcrf</bcf:citekey>
-    <bcf:citekey order="63" intorder="1">lstm</bcf:citekey>
-    <bcf:citekey order="64" intorder="1">bilstm</bcf:citekey>
-    <bcf:citekey order="65" intorder="1">anystyle</bcf:citekey>
-    <bcf:citekey order="66" intorder="1">giant</bcf:citekey>
-    <bcf:citekey order="67" intorder="1">anystyle</bcf:citekey>
-    <bcf:citekey order="68" intorder="1">ArchComapre</bcf:citekey>
-    <bcf:citekey order="69" intorder="1">ArchComapre</bcf:citekey>
-    <bcf:citekey order="70" intorder="1">ArchComapre</bcf:citekey>
-    <bcf:citekey order="71" intorder="1">ArchComapre</bcf:citekey>
-  </bcf:section>
-  <!-- SORTING TEMPLATES -->
-  <bcf:sortingtemplate name="none">
-    <bcf:sort order="1">
-      <bcf:sortitem order="1">citeorder</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="2">
-      <bcf:sortitem order="1">intciteorder</bcf:sortitem>
-    </bcf:sort>
-  </bcf:sortingtemplate>
-  <!-- DATALISTS -->
-  <bcf:datalist section="0"
-                name="none/global//global/global/global"
-                type="entry"
-                sortingtemplatename="none"
-                sortingnamekeytemplatename="global"
-                labelprefix=""
-                uniquenametemplatename="global"
-                labelalphanametemplatename="global"
-                namehashtemplatename="global">
-  </bcf:datalist>
-</bcf:controlfile>
+    <bcf:citekey order="56" intorder="1">2019-bert</bcf:citekey>
+    <bcf:citekey order="57" intorder="1">linq</bcf:citekey>
+    <bcf:citekey order="58" intorder="1">sanh2019distilbert</bcf:citekey>
+    <bcf:citekey order="59" intorder="1">2019-bert</bcf:citekey>
+    <bcf:citekey order="60" intorder="1">distilbert-multilingual</bcf:citekey>
+    <bcf:citekey order="61" intorder="1">crf2001</bcf:citekey>
+    <bcf:citekey order="62" intorder="1">pythoncrfsuite</bcf:citekey>
+    <bcf:citekey order="63" intorder="1">torchcrf</bcf:citekey>
+    <bcf:citekey order="64" intorder="1">lstm</bcf:citekey>
+    <bcf:citekey order="65" intorder="1">bilstm</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">anystyle</bcf:citekey>
+    <bcf:citekey order="67" intorder="1">giant</bcf:citekey>
+    <bcf:citekey order="68" intorder="1">anystyle</bcf:citekey>

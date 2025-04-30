@@ -6,23 +6,19 @@
     arrow/.style={->, thick, >=Stealth}
 ]
 
-    % Observed tokens (x1 to x5)
-    \node[obs] (x1) at (0,0) {$x_1$};
-    \node[obs] (x2) [right of=x1] {$x_2$};
-    \node[obs] (x3) [right of=x2] {$x_3$};
-    \node[obs] (x4) [right of=x3] {$x_4$};
-    \node[obs] (x5) [right of=x4] {$x_5$};
-
     % Labels above (y1 to y5)
-    \node[label] (y1) at (x1) [yshift=2cm] {$y_1$};
-    \node[label] (y2) at (x2) [yshift=2cm] {$y_2$};
-    \node[label] (y3) at (x3) [yshift=2cm] {$y_3$};
-    \node[label] (y4) at (x4) [yshift=2cm] {$y_4$};
-    \node[label] (y5) at (x5) [yshift=2cm] {$y_5$};
+    \node[label] (y1) at (0,0) {$y_1$};
+    \node[label] (y2) [right of=y1] {$y_2$};
+    \node[label] (y3) [right of=y2] {$y_3$};
+    \node[label] (y4) [right of=y3] {...};
+    \node[label] (y5) [right of=y4] {$y_n$};
+
+    % Observed tokens (x1 to x5)
+    \node[obs] (x) at (y3) [yshift=-2cm] {$x$};
 
     % Emission arrows (from x to y)
     \foreach \i in {1,...,5} {
-        \draw[-, thick] (x\i) -- (y\i);
+        \draw[-, thick] (x) -- (y\i);
     }
 
     % Transition arrows (between y's)
@@ -31,9 +27,9 @@
     }
 
     % Caption
-    \node[align=center, below=1.2cm of x3, font=\small] {
-        Linear-chain CRF structure: emission edges (bottom-up) and transition edges (left-right).
-    };
+    % \node[align=center, below=1.2cm of x, font=\small] {
+    %     Linear-chain CRF structure: emission edges (bottom-up) and transition edges (left-right).
+    % };
 
 \end{tikzpicture}
 

@@ -3,12 +3,13 @@ Two different training pipelines were used for the CRFsuite-based model and the 
 \subsection{CRFsuite Model}
 The CRFsuite model was implemented using the sklearn-crfsuite Python library. Feature vectors for each token were constructed from a combination of handcrafted features and Byte-Pair Embeddings (BPEmb). These features were extracted and formatted into the string-keyed dictionary structure expected by CRFsuite.
 \begin{compactitem}
-\item \textbf{Training size:} 1 million \/ 5 million annotated reference strings
-\item \textbf{Test size:} 100,000 \/ 200,000 references
+\item \textbf{Training size:} Training was done using both 1 million and 5 million annotated reference strings
+\item \textbf{Test size:} Testing used both 100,000 and 200,000 references according to the training size
 \item \textbf{Optimizer:} Limited-memory BFGS (lbfgs)
 \item \textbf{Regularization:} c1 = 0.1, c2 = 0.1
 \item \textbf{Max iterations:} 100
 \item \textbf{Transitions:} Enabled \texttt{all\_possible\_transitions} for richer label modeling
+\item \textbf{Number of features:} 600 when using BPEmb, and 619 using BPEmb and Hand features
 \end{compactitem}
 The model was trained using default BIO-annotated labels. Model performance was evaluated using token-level metrics (precision, recall, F1-score) computed by flattening the sequences. The trained CRF model was serialized and stored using pickle for reuse and reproducibility.
 
@@ -29,10 +30,18 @@ The BiLSTM + CRF model was implemented in PyTorch. It uses dense embeddings and 
 \end{compactitem}
 \item \textbf{Architecture:}
 \begin{compactitem}
-\item Bidirectional LSTM followed by dropout
-\item Projected handcrafted features added to LSTM output
+\item Bidirectional LSTM  followed by dropout
+\item Projected handcrafted features added to BiLSTM output
 \item Linear layer to generate emission scores
 \item CRF layer for structured decoding
+\item \textbf{Model Specification:}
+\begin{compactitem}
+\item LSTM hidden dim: 128
+\item Hand Features embedding size: 50
+\item BPEmb featurs: 600
+\item Dropout rate: 0.5
+\item Number of tags (labels): 26
+\end{compactitem}
 \end{compactitem}
 \end{compactitem}
 
@@ -59,6 +68,7 @@ The training setup was as follows:
 \item \textbf{Embedding:}
 \begin{compactitem}
     \item Contextual embeddings from the frozen BERT encoder
+    \item Number of features: 4096 when using \texttt{Linq-Embed-Mistral}, and 768 when using \texttt{DistilBERT} 
 \end{compactitem}
 \end{compactitem}
 

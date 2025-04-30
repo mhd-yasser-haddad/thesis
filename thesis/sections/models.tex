@@ -1,9 +1,9 @@
 \section{Sequence Labeling Models}
-In this section, we outline the sequence labeling models employed to parse strings of reference into structured fields. The task is posed as a token-level classification problem, with each token or word in a citation given a label like \texttt{Author}, \texttt{Title}, \texttt{Year}, etc. To address this, we look at a series of models, beginning with simple Conditional Random Fields (CRFs) and moving towards more expressive neural models like BiLSTM with CRF. Each model processes features in a different manner, and the design choices they make are in an effort to balance between accuracy, interpretability, and computational cost.
+In this section, we outline the sequence labeling models employed to parse strings of reference into structured fields. The task is posed as a token-level classification problem, with each token or word in a citation given a label like \texttt{B-Author}, \texttt{I-Title}, \texttt{I-Year}, etc. To address this, we look at a series of models, beginning with simple Conditional Random Fields (CRFs) and moving towards more expressive neural models like BiLSTM with CRF. Each model processes features in a different manner, and the design choices they make are in an effort to balance between accuracy, interpretability, and computational cost.
 \subsection{Conditional Random Fields (CRF)}
 Conditional Random Fields (CRFs) are probabilistic graphical models that are highly used in sequence labeling tasks in natural language processing (NLP). Lafferty, McCallum, and Pereira~\cite{crf2001} first introduced CRFs as modeling the conditional probability of a sequence of labels given a sequence of input observations. Unlike generative models such as Hidden Markov Models (HMMs), CRFs do not make strong independence assumptions on the input and instead optimize the conditional likelihood of the output sequence directly.
 
-In CRFs, the label of each sequence is not only a function of the input features of the respective token but also of the labels of neighboring tokens. This makes CRFs particularly well-suited to applications where output structure is important, i.e., part-of-speech tagging, named entity recognition, and, in this work, bibliographic reference parsing. In this case, tokens in a citation string are labeled with field types (e.g., Author, Title, Journal), and capturing dependencies between consecutive labels greatly enhances prediction.
+In CRFs, the label of each sequence is not only a function of the input features of the respective token but also of the labels of neighboring tokens in both directions. This makes CRFs particularly well-suited to applications where output structure is important, i.e., part-of-speech tagging, named entity recognition, and, in this work, bibliographic reference parsing. In this case, tokens in a citation string are labeled with field types (e.g., Author, Title, Journal), and capturing dependencies between consecutive labels greatly enhances prediction.
 
 There are two implementations of CRFs discussed in this thesis:
 \begin{compactitem}
@@ -19,7 +19,7 @@ CRFs provide a principled and explainable way of solving structured prediction p
 \end{figure}
 
 \subsubsection{CRFsuite}
-At first deployment, Conditional Random Fields had been used using the CRFsuite library, a lightweight yet effective structpred task framework for sequence labeling and other structured tasks~\cite{pythoncrfsuite}. This was a non-contextual baseline model, and it used only rich, handcrafted features and subword-level embeddings rather than deep contextual encoders.
+At first deployment, Conditional Random Fields had been used using the CRFsuite library, a lightweight yet effective structured prediction task framework for sequence labeling and other structured tasks~\cite{pythoncrfsuite}. This was a non-contextual baseline model, and it used only rich, handcrafted features and subword-level embeddings rather than deep contextual encoders.
 
 The model input was a mixture of
 \begin{compactitem}
@@ -38,7 +38,7 @@ In this setup, each token in the input sequence is represented by a concatenated
 \item \textbf{Trainable embeddings} from handcrafted categorical features.
 \end{compactitem}
 The pretrained embeddings are input to a Bidirectional LSTM (BiLSTM) encoder, which captures context across the entire sequence in both the forward and backward directions. The output of the BiLSTM — a contextualized representation for each token — is concatenated with the hand features, and then processed by a linear layer that produces emission scores for each label.
-On top of the final layer, there is a CRF module that decodes the most likely sequence of labels by modeling the transition between tags. The module is trained jointly with the rest of the network under a negative log-likelihood loss, allowing the model to simultaneously learn emission as well as transition parameters.
+On top of the final layer, there is a CRF module that decodes the most likely sequence of labels by modeling the compatibility between tags. The module is trained jointly with the rest of the network under a negative log-likelihood loss, allowing the model to simultaneously learn emission as well as transition parameters.
 This design benefits from both learned representations and structured sequence modeling. While the BiLSTM produces contextualized input embeddings, the CRF layer ensures that label predictions are in line with common citation patterns — e.g., ensuring that a B-Author label is not directly followed by a B-Year without an intervening I-Author.
 
 The neural CRF was implemented using the torchcrf package, a widely used CRF layer for PyTorch that offers both training and decoding using efficient forward–backward algorithms.
@@ -54,7 +54,7 @@ In this design, the input to the BiLSTM is subword embeddings obtained from Byte
 In addition to the subword embeddings, manually crafted features inspired by AnyStyle~\cite{anystyle} are used. Such categorical features are processed into a trainable embedding layer and projected to the same space as the BiLSTM representations. The two representations are combined using element-wise addition to form a fused vector that includes both learned and manually crafted knowledge.
 
 \subsubsection{CRF Output Layer}
-The combined representations are fed into a linear classifier to produce emission scores for each label. These are fed as input to a CRF layer that models label transitions and produces the most probable sequence using the Viterbi algorithm. The CRF is trained on a negative log-likelihood loss, which encourages it to produce high scores for valid and correct label sequences.
+The combined representations are fed into a linear classifier to predicts scores for each label. These are fed as input to a CRF layer that models label transitions and produces the most probable sequence using the Viterbi algorithm. The CRF is trained on a negative log-likelihood loss, which encourages it to produce high scores for valid and correct label sequences.
 
 This model allows the system to take advantage of both deep contextualized representations and sequence-level coherence, and it is best suited for annotating structured references with highly diverse formatting styles.
 

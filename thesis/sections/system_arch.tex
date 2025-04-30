@@ -4,7 +4,72 @@ The system architecture is composed of modular stages: input ingestion and prepr
 
 \subsection{Input and Dataset Constraints}
 The system uses the GIANT dataset~\cite{giant}, which is one of the largest annotated reference string corpora available in this field anywhere. The complete GIANT corpus is made up of more than 900 million citations covering thousands of scientific styles and topics. However, due to computational constraints, it was not possible to train models on the entire corpus. A random sample of 5 million citation strings was chosen to ensure high diversity among citation styles, fields, and languages. Effective experimentation was conducted at this scale while preserving the dataset’s challenging variability.
-All the strings in the dataset are first annotated in an XML-based hierarchical format that provides field-level segmentation, but it’s not directly compatible with the standard sequence labeling formats. The XML annotation has both the main labels mentioned previously and additional metadata or formatting tags that are not relevant to the core parsing task. As a processing step, the extra labels were removed, and the remaining of the string was to a flat, token-level BIO tagging scheme. In this scheme, every token is labeled as the beginning (B-) or inside (I-) of some field, or as outside (O) if it does not belong to an identified segment. This conversion was performed in order to get the data into a format that can be used with off-the-shelf sequence labeling models. Some of the last tags are B-Author, I-Title, B-Journal, and B-Year. By using BIO encoding, the models are able to learn fixed field boundaries in citation strings, even across highly varying formatting styles.
+All the strings in the dataset are first annotated in an XML-based hierarchical format that provides field-level segmentation, but it’s not directly compatible with the standard sequence labeling formats. The XML annotation has both the main labels mentioned previously and additional metadata or formatting tags that are not relevant to the core parsing task. As a processing step, the extra labels were removed, and the remaining of the string turned into a flat reference.
+
+Annotated reference string before parsing example: 
+\begin{verbatim}
+    <author>
+        <family>Ritchie</family>,
+        <given>E.</given> and
+        <family>Powell</family>,
+        <given>Elmer Ellsworth</given>
+    </author> (
+    <issued>
+        <year>1907</year>
+    </issued>)
+    <title>Spinoza and Religion.</title>
+    <container-title>The Philosophical Review</container-title>,
+    <volume>16</volume>(
+    <issue>3</issue>), p.
+    <page>339</page>. [online] Available from:
+    <URL>http://dx.doi.org/10.2307/2177340</URL>
+\end{verbatim}
+Annotated reference string after parsing example:
+\begin{verbatim}
+    <author>
+        Ritchie E. and Powell, Elmer Ellsworth
+    </author>
+    <punc>
+        (
+    </punc>
+    <year>
+        1907
+    </year>
+    <punc>
+        )
+    </punc>
+    <title>
+        Spinoza and Religion.
+    </title>
+    <container-title>
+        The Philosophical Review
+    </container-title>
+    <volume>
+        16
+    </volume>
+    <punc>
+        (
+    </punc>
+    <issue>
+        3
+    </issue>
+    <punc>
+        )
+    </punc>
+    <punc>
+    ,
+    </punc> 
+    <page>
+        p. 339
+    </page>
+    <other>
+        [online] Available from:
+    </other>
+    <URL>
+        http://dx.doi.org/10.2307/2177340
+    </URL>
+\end{verbatim}
+And then turned into a token-level BIO tagging scheme. In this scheme, every token is labeled as the beginning (B-) or inside (I-) of some field, or as outside (O) if it does not belong to an identified segment. This conversion was performed in order to get the data into a format that can be used with off-the-shelf sequence labeling models. Some of the last tags are B-Author, I-Title, B-Journal, and B-Year. By using BIO encoding, the models are able to learn fixed field boundaries in citation strings, even across highly varying formatting styles.
 
 \subsection{Preprocessing and Tokenization}
 Raw reference strings can be different in the way they’re formatted, their punctuation, and the language, which makes preprocessing an important step. The tokenization method used in the system is whitespace-sensitive, punctuation-sensitive, and character pattern-sensitive. This makes sure that tokens like initials, abbreviations, hyphenated names, volume/issue numbers, and DOIs are appropriately separated and paired with the correct label.

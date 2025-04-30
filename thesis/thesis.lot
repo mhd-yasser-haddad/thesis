@@ -1,11 +1,11 @@
 \select@language {english} \addvspace {10\p@ }
 \select@language {english} \addvspace {10\p@ }
 \select@language {english} \addvspace {10\p@ }
-\select@language {english} \contentsline {table}{\numberline {3.1}{\ignorespaces Summary of Handcrafted Features}}{25}{table.caption.16}%
-\select@language {english} \contentsline {table}{\numberline {3.2}{\ignorespaces Simplified Label Set for BIO Tagging}}{38}{table.caption.27}%
+\select@language {english} \contentsline {table}{\numberline {3.1}{\ignorespaces Summary of Handcrafted Features}}{30}{table.caption.17}%
+\select@language {english} \contentsline {table}{\numberline {3.2}{\ignorespaces Simplified Label Set for BIO Tagging}}{44}{table.caption.28}%
 \select@language {english} \addvspace {10\p@ }
-\select@language {english} \contentsline {table}{\numberline {4.1}{\ignorespaces CRF Model Comparison (Features and Sizes)}}{45}{table.caption.32}%
-\select@language {english} \contentsline {table}{\numberline {4.2}{\ignorespaces BiLSTM+CRF Feature Set Comparison}}{46}{table.caption.33}%
-\select@language {english} \contentsline {table}{\numberline {4.3}{\ignorespaces BERT-based CRF Token-level Performance}}{47}{table.caption.34}%
-\select@language {english} \contentsline {table}{\numberline {4.4}{\ignorespaces Final comparison between the best-performing models from each architecture family.}}{48}{table.caption.35}%
+\select@language {english} \contentsline {table}{\numberline {4.1}{\ignorespaces CRF Model Comparison (Features and Sizes)}}{51}{table.caption.33}%
+\select@language {english} \contentsline {table}{\numberline {4.2}{\ignorespaces BiLSTM+CRF Feature Set Comparison}}{52}{table.caption.34}%
+\select@language {english} \contentsline {table}{\numberline {4.3}{\ignorespaces BERT-based CRF Token-level Performance}}{53}{table.caption.35}%
+\select@language {english} \contentsline {table}{\numberline {4.4}{\ignorespaces Final comparison between the best-performing models from each architecture family.}}{54}{table.caption.36}%
 \select@language {english} \addvspace {10\p@ }

@@ -3,24 +3,100 @@
 
 The problem with bibliographic reference string parsing has been a challenge in the field of information extraction for use inside digital libraries and indexing systems. And over the last couple of years, researchers have explored different approaches to segment and label reference strings more accurately, from handcrafted rule-based systems and feature-engineered machine learning models to modern neural architectures. These various approaches aim to convert normal citation strings into structured metadata fields such as author, title, journal, year, and volume, which are very important for digital indexing, citation networks, and scholarly search systems.
 
+Reference string example:
+\begin{verbatim}
+    Ritchie, E. and Powell, Elmer Ellsworth. (1907). Spinoza 
+    and Religion. Philosophical Review 16 (3), p. 339-340, 
+    [online] Available from: http://dx.doi.org/10.2307/2177340
+\end{verbatim}
+Annotated reference string example:
+\begin{verbatim}
+    <author>
+        Ritchie E. and Powell, Elmer Ellsworth
+    </author>
+    <punc>
+        (
+    </punc>
+    <year>
+        1907
+    </year>
+    <punc>
+        )
+    </punc>
+    <title>
+        Spinoza and Religion.
+    </title>
+    <container-title>
+        The Philosophical Review
+    </container-title>
+    <volume>
+        16
+    </volume>
+    <punc>
+        (
+    </punc>
+    <issue>
+        3
+    </issue>
+    <punc>
+        )
+    </punc>
+    <punc>
+    ,
+    </punc> 
+    <page>
+        p. 339
+    </page>
+    <other>
+        [online] Available from:
+    </other>
+    <URL>
+        http://dx.doi.org/10.2307/2177340
+    </URL>
+\end{verbatim}
+
 \section[Early Methods and the Rise of Machine Learning]{Early Methods and the Rise\\ of Machine Learning}
 The first tries to automate the reference parsing task, relied mainly on regular expressions and template-matching techniques. These methods worked well within limited domains or under specific citation styles but quickly became weak and unreliable in the face of noise, new variations of reference styles started showing up, and multilingual citations. The introduction of probabilistic models marked a significant turning point. Notably, Hidden Markov Models (HMMs) were among the earliest probabilistic sequence models applied to this task~\cite{HMM1165342}.
 However, the use of Conditional Random Fields (CRFs) surpassed HMMs because they offered a discriminative framework more suited for structured prediction tasks such as reference segmentation and reference parsing. CRFs were introduced as a general and effective replacement that could capture long-range dependencies and handle random, overlapping features without needing strong independent assumptions~\cite{crf2001}. CRFs were the most widely used solutions in most of the early systems, including the well-cited ParsCite system, which combined a CRF model with a collection of heuristics to deal with pre- and post-processing~\cite{councill-etal-2008-parscit}.
-ParsCit, in particular, was implemented as a modular, open-source tool and used 23 hand-engineered features that are token identity, position, punctuation, orthography, and external dictionaries (ParsCit). It gave a strong performance on benchmark datasets such as CORA~\cite{cora1999}, and set a standard for other reference parsing systems. CiteSeerX and Mendeley also used similar techniques with dictionary lookups and CRF-based models~\cite{councill-etal-2008-parscit}~\cite{citeseerx}.
+ParsCit, in particular, was implemented as a modular, open-source tool and used 23 hand-engineered features that are token identity, position, punctuation, orthography, and external dictionaries~\cite{councill-etal-2008-parscit}. It gave a strong performance on benchmark datasets such as CORA~\cite{cora1999}, and set a standard for other reference parsing systems. CiteSeerX and Mendeley also used similar techniques with dictionary lookups and CRF-based models~\cite{councill-etal-2008-parscit,citeseerx}.
 
 \section{Limitations of Feature-Engineered Systems}
 Even though they were successful initially, CRF-based systems have some limitations. First of all, their reliance on hand-engineered features made them very dependent on the domain they’re trained on. Features like name dictionaries or publisher lists don’t generalize well between languages or domains. Second, while CRFs can model local context very easily, they can’t handle more complex, long-range dependencies that could appear in many citation styles. Also, most CRF-based models have been trained on homogeneous corpora (typically English-language, computer science citations), which made them limited to use on real-world, multilingual corpora~\cite{prasad2018neuralparscit}.
 Studies such as CERMINE~\cite{cermine} and BibPro~\cite{bibpro} further continued to improve finer feature sets and templates to raise accuracy, yet the limitations remained the same: scalability and generalization. The systems also typically ignored the growing availability of large-scale, unlabeled citation data and instead relied on limited, curated gold-standard datasets.
 
 \section{Transition to Deep Learning Models}
-To avoid the mentioned limitations, researchers began exploring neural network models that could potentially learn feature representations from raw text without intermediate manual feature engineering. The neural ParsCit system~\cite{prasad2018neuralparscit} is one of the first models that tried to apply deep learning to solve the reference parsing problem. The researchers on that model used a BiLSTM + CRF architecture, in which both character and word embeddings are used as input to the bidirectional LSTM network, and the output was then decoded using the CRF layer.
-This combined approach managed to use the power of both deep and structured models: the BiLSTM managed to capture contextual information in both directions, and the CRF made sure that label sequences were consistent. Neural ParsCit showed better performance than traditional CRF-only models, especially on multilingual and out-of-domain references. More importantly, the researchers trained embedding using large unlabeled citation corpora and showed that representation learning could help models generalize better to unfamiliar styles and vocabularies.
+To avoid the mentioned limitations, researchers began exploring neural network models that could potentially learn feature representations from annotated raw text without intermediate manual feature engineering. The neural ParsCit system~\cite{prasad2018neuralparscit} is one of the first models that tried to apply deep learning to solve the reference parsing problem. The researchers on that model used a BiLSTM + CRF architecture, in which both character and word embeddings are used as input to the bidirectional LSTM network, and the output was then decoded using the CRF layer.
+This combined approach managed to use the power of both deep and structured models: the BiLSTM managed to capture contextual information in both directions, and the CRF made sure that label sequences were consistent. Neural ParsCit showed better performance than traditional CRF-only models, especially on multilingual and out-of-domain references. More importantly, the researchers trained the model using large unlabeled citation corpora and showed that representation learning could help models generalize better to unfamiliar styles and vocabularies.
 The study also discussed how dictionary-based features used in a system like ParsCit are still vulnerable. It avoided rigid lexicons, and its neural model helped with robustness while handling named entities, low-frequency words, or unusual punctuation. This was a step forward in making parsing systems that would address the diversity of real-world academic citations.
 
+\section[Emergence of Transformer-Based Citation Parsers]{Emergence of Transformer-Based\\ Citation Parsers}
+As deep learning developed, transformer models began showing a huge dominance over recurrent architectures in sequence modeling tasks. This eventually translated into a new generation of citation parsing programs, such as TransParsCit~\cite{transparscit}, that used transformers openly for reference segmentation.
+TransParsCit introduces a Transformer-CRF hybrid that learned on the GIANT dataset. The size of the dataset provided generalizability across an enormous range of formatting styles, a common cause of challenge in citation parsing.
+
+Instead of counting on recurrent layers or handcrafted features like BiLSTMs, TransParsCit utilizes a transformer encoder to provide contextual token representations. These are passed through a CRF decoding layer to maintain label consistency and inter-token dependency. Contrasting with earlier work such as Neural ParsCit, which depended on word-based and character-based embeddings, this architecture avoids feature engineering entirely and is parallelizable by design in transformers.
+The model was evaluated on the CORA benchmark test set, and it achieved an F1-score of more than 84\% on principal fields upon training on 219,000 reference strings. With increased training data size, the performance consistently increased, indicating that transformer-based models are highly benefited by large, diverse training corpora.
+
+This paper demonstrates the strength of transformer-based models even when there are no handcrafted linguistic features and indicates the strength of synthetic training data at scale.
+
+
 \section[Innovations with Contrastive and Prompt Learning]{Innovations with Contrastive\\ and Prompt Learning}
-While BiLSTM and Transformer-based models have been responsible for most of the recent progress in bibliographic reference parsing, Yin and Wang~\cite{contrastive} presented a novel approach that includes contrastive learning and prompt-based learning for segmentation.
-\texttt{CONT\_Prompt\_ParsRef} is their model that aims to enhance the robustness of the model, especially in low-resource settings and multilingual citation styles, by making representations more discriminative and more interpretable. The contrastive learning component clusters similar entity tokens in the embedding space and separates dissimilar ones, which helps the model to find the difference between ambiguous or overlapping field types. Meanwhile, the prompt learning mechanism helps the model use templated prompts embedded within the input, which allows it to learn from few-shot examples or external guidance.
-The authors validated their methods on a bilingual benchmark dataset containing 12,000 reference strings each for Chinese and English. Compared to BiLSTM + CRF and BERT + CRF baselines, their model achieved more than 96\% F1 scores for both sets of languages. Their study confirmed that both modules (contrastive and prompt learning) made considerable contributions towards the performance of the model. Moreover, their system has good generalization to different citation styles. This work is a breakthrough in the sense that it demonstrates that more recent representation learning techniques from larger NLP research can be easily applied to bibliographic parsing tasks.
+Recent state-of-the-art parsing bibliographic references have also turned towards state-of-the-art representation learning techniques to show better performance in low-resource and multilingual settings. One such notable contribution is Yin and Wang's~\cite{contrastive} \texttt{CONT\_Prompt\_ParsRef} model, in which they introduce a robust combination of prompt-based learning and contrastive learning.
+Contrastive learning in this context helps the model discriminate between different kinds of metadata by training more discriminative token embeddings. In plain language, the model tries to group similar tokens (e.g., all tokens of type "Author") closer to one another in the embedding space, and push tokens of distinct types (e.g., "Author" and "Title") apart from one another. Clustering in this way enables the model to produce sharper decision boundaries, which makes it easier to predict correct labels — especially when dealing with overlapping or ambiguous field types.
+For example, the model might confuse "IEEE" as part of a journal name or even as part of a subset of a conference name. Using contrastive training, "IEEE" would be closer to other journal names in embedding space and farther away from out-of-domain entities like author names or page numbers. This improves classification and reduces errors caused by similar structures within domains.
+
+Besides this, the prompt learning component guides the model during training by introducing example-based templates to the input. The prompts provide the model with a structured context — e.g., examples of journal titles or author names — and serve as a soft supervision signal. Instead of learning from the data blindly, the model uses these prompts to "understand" what each label category typically looks like. During training, the goal is to move the representation of a token in the input sequence close to the representations of its corresponding prompt examples.
+
+The combination of prompt learning and contrastive learning makes the system especially robust on difficult, varied citation styles and low-resource scenarios. In their experiments on a bilingual dataset (English and Chinese), the authors showed that their full model outperformed several strong baselines — BiLSTM + CRF, BERT + CRF, and CNN — with 96.39\% F1 on English references. Their ablation study showed that both components were significant, with contrastive learning having a slightly greater impact on performance.
+This paper is a compelling demonstration that representation learning methods like contrastive clustering and template-based prompting can have a significant impact on reference parsing — not only in terms of accuracy, but also robustness and flexibility.
+\begin{figure}[ht]
+    \centering
+    \input{./figures/contrastive.tex}
+    \caption[\texttt{CONT\_Prompt\_ParsRef}: contrastive and prompt learning architecture]{Overview of the CONT\_Prompt\_ParsRef architecture combining contrastive and prompt learning.}
+    \label{fig:contrastive-learning}
+\end{figure}
+% While BiLSTM and Transformer-based models have been responsible for most of the recent progress in bibliographic reference parsing, Yin and Wang~\cite{contrastive} presented a novel approach that includes contrastive learning and prompt-based learning for segmentation.
+% \texttt{CONT\_Prompt\_ParsRef} is their model that aims to enhance the robustness of the model, especially in low-resource settings and multilingual citation styles, by making representations more discriminative and more interpretable. The contrastive learning component clusters similar entity tokens in the embedding space and separates dissimilar ones, which helps the model to find the difference between ambiguous or overlapping field types. Meanwhile, the prompt learning mechanism helps the model use templated prompts embedded within the input, which allows it to learn from few-shot examples or external guidance.
+% The authors validated their methods on a bilingual benchmark dataset containing 12,000 reference strings each for Chinese and English. Compared to BiLSTM + CRF and BERT + CRF baselines, their model achieved more than 96\% F1 scores for both sets of languages. Their study confirmed that both modules (contrastive and prompt learning) made considerable contributions towards the performance of the model. Moreover, their system has good generalization to different citation styles. This work is a breakthrough in the sense that it demonstrates that more recent representation learning techniques from larger NLP research can be easily applied to bibliographic parsing tasks.
 
 \section[Comparative Evaluations and Modern Architectures]{Comparative Evaluations\\ and Modern Architectures}
 Following up on Neural ParsCit’s~\cite{prasad2018neuralparscit} observations, recent work has focused on the task of comparatively assessing modern NLP architectures for reference parsing. In particular, Cuéllar Hidalgo et al. (2024)~\cite{ArchComapre} conducted an empirical comparison of three well-known architectures: CRF, BiLSTM + CRF, and Transformer + CRF. Their study used the gigantic GIANT corpus~\cite{giant} (comprising over 900 million annotated references across 1500+ citation styles) for training and the well-established CORA corpus~\cite{cora1999} for testing.

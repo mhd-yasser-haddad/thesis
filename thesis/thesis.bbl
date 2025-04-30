@@ -134,8 +134,8 @@
       \strng{authornamehash}{e59453f6f04fcef812815d99282c1794}
       \strng{authorfullhash}{e59453f6f04fcef812815d99282c1794}
       \strng{authorfullhashraw}{e59453f6f04fcef812815d99282c1794}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{International Journal on Digital Libraries}
@@ -176,8 +176,8 @@
       \strng{authornamehash}{8b36bd44aefcefb1d28f65b1195112e1}
       \strng{authorfullhash}{8b36bd44aefcefb1d28f65b1195112e1}
       \strng{authorfullhashraw}{8b36bd44aefcefb1d28f65b1195112e1}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{IEEE ASSP Magazine}
@@ -224,8 +224,8 @@
       \strng{authornamehash}{d849d69257d8e96b43ae97a556fb09a4}
       \strng{authorfullhash}{d849d69257d8e96b43ae97a556fb09a4}
       \strng{authorfullhashraw}{d849d69257d8e96b43ae97a556fb09a4}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the Eighteenth International Conference on Machine Learning}
@@ -250,8 +250,8 @@
       \strng{authornamehash}{186387e21c008ff67bd549a693e39e77}
       \strng{authorfullhash}{186387e21c008ff67bd549a693e39e77}
       \strng{authorfullhashraw}{186387e21c008ff67bd549a693e39e77}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Accessed: 2025-04-17}
@@ -296,8 +296,8 @@
       \strng{authorfullhash}{3885c445a85c61e287f23a6183576963}
       \strng{authorfullhashraw}{3885c445a85c61e287f23a6183576963}
       \field{extraname}{1}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{05}
@@ -330,8 +330,8 @@
       \strng{authornamehash}{4fba2261661a378ffb311657eea02963}
       \strng{authorfullhash}{4fba2261661a378ffb311657eea02963}
       \strng{authorfullhashraw}{4fba2261661a378ffb311657eea02963}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{04}
@@ -370,8 +370,8 @@
       \strng{authornamehash}{62c7b2aaa6411bb3f2686da8f1edd2b5}
       \strng{authorfullhash}{62c7b2aaa6411bb3f2686da8f1edd2b5}
       \strng{authorfullhashraw}{62c7b2aaa6411bb3f2686da8f1edd2b5}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Lecture Notes in Electrical Engineering: Decision Intelligence}
@@ -444,8 +444,8 @@
       \strng{authornamehash}{6af3e8f456bd3a17c1a89ade2ac0f57f}
       \strng{authorfullhash}{38486a2e24e43cca500d6d8bc7d93731}
       \strng{authorfullhashraw}{38486a2e24e43cca500d6d8bc7d93731}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Bibliographic references containing citation information of academic literature play an important role as a medium connecting earlier and recent studies. As references contain machine-readable metadata such as author name, title, or publication year, they have been widely used in the field of citation information services including search services for scholarly information and research trend analysis. Many institutions around the world manually extract and continuously accumulate reference metadata to provide various scholarly services. However, manually collection of reference metadata every year continues to be a burden because of the associated cost and time consumption. With the accumulation of a large volume of academic literature, several tools, including GROBID and CERMINE, that automatically extract reference metadata have been released. However, these tools have some limitations. For example, they are only applicable to references written in English, the types of extractable metadata are limited for each tool, and the performance of the tools is insufficient to replace the manual extraction of reference metadata. Therefore, in this study, we focused on constructing a high-quality corpus to automatically extract metadata from multilingual journal article references. Using our constructed corpus, we trained and evaluated a BERT-based transfer-learning model. Furthermore, we compared the performance of the BERT-based model with that of the existing model, GROBID. Currently, our corpus contains 3,815,987 multilingual references, mainly in English and Korean, with labels for 13 different metadata types. According to our experiment, the BERT-based model trained using our corpus showed excellent performance in extracting metadata not only from journal references written in English but also in other languages, particularly Korean. This corpus is available at http://doi.org/10.23057/47.}
@@ -497,6 +497,85 @@
       \verb https://anystyle.io/
       \endverb
     \endentry
+    \entry{giant}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=64291e6c3072447e603f8b92e7cd9ab0}{%
+           family={Grennan},
+           familyi={G\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f313b61bb0969bd42fd683954ff5ec69}{%
+           family={Schibel},
+           familyi={S\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbd31d05c6facdb22147b6f9c0231b01}{%
+           family={Collins},
+           familyi={C\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2e33a4017ed8565e1d62adbc946d27fd}{%
+           family={Beel},
+           familyi={B\bibinitperiod},
+           given={Joeran},
+           giveni={J\bibinitperiod}}}%
+      }
+      \name{editor}{4}{}{%
+        {{hash=979b59e5a8896c7415444f052a100583}{%
+           family={Curry},
+           familyi={C\bibinitperiod},
+           given={Edward},
+           giveni={E\bibinitperiod}}}%
+        {{hash=354197578c9e4fbb7d0b1fc263f4622e}{%
+           family={Keane},
+           familyi={K\bibinitperiod},
+           given={Mark\bibnamedelima T.},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=de0cda1ceb90bc805c9b0df1911180df}{%
+           family={Ojo},
+           familyi={O\bibinitperiod},
+           given={Adegboyega},
+           giveni={A\bibinitperiod}}}%
+        {{hash=bd8ac36c8ef2df60dc19ffed7662e488}{%
+           family={Salwala},
+           familyi={S\bibinitperiod},
+           given={Dhaval},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {CEUR-WS.org}%
+      }
+      \strng{namehash}{ab0ff1fb6885380214fa186ba4fb8d8d}
+      \strng{fullhash}{df2149197f38ebee7aeaa076936ba9d6}
+      \strng{fullhashraw}{df2149197f38ebee7aeaa076936ba9d6}
+      \strng{bibnamehash}{ab0ff1fb6885380214fa186ba4fb8d8d}
+      \strng{authorbibnamehash}{ab0ff1fb6885380214fa186ba4fb8d8d}
+      \strng{authornamehash}{ab0ff1fb6885380214fa186ba4fb8d8d}
+      \strng{authorfullhash}{df2149197f38ebee7aeaa076936ba9d6}
+      \strng{authorfullhashraw}{df2149197f38ebee7aeaa076936ba9d6}
+      \strng{editorbibnamehash}{b09c3686f37cf64dcfe5f747d111d639}
+      \strng{editornamehash}{b09c3686f37cf64dcfe5f747d111d639}
+      \strng{editorfullhash}{61d64388287d78e394b5676e28edc6f5}
+      \strng{editorfullhashraw}{61d64388287d78e394b5676e28edc6f5}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{AICS}
+      \field{series}{CEUR Workshop Proceedings}
+      \field{title}{GIANT: The 1-Billion Annotated Synthetic Bibliographic-Reference-String Dataset for Deep Citation Parsing.}
+      \field{volume}{2563}
+      \field{year}{2019}
+      \field{pages}{260\bibrangedash 271}
+      \range{pages}{12}
+      \verb{urlraw}
+      \verb http://dblp.uni-trier.de/db/conf/aics/aics2019.html#GrennanSCB19
+      \endverb
+      \verb{url}
+      \verb http://dblp.uni-trier.de/db/conf/aics/aics2019.html#GrennanSCB19
+      \endverb
+      \keyw{dblp}
+    \endentry
     \entry{cora1999}{misc}{}{}
       \name{author}{3}{}{%
         {{hash=eecf2ce6415b262f4cbccc026c92c684}{%
@@ -529,8 +608,8 @@
       \strng{authornamehash}{720b274ed25386a0d16ca989c3202315}
       \strng{authorfullhash}{720b274ed25386a0d16ca989c3202315}
       \strng{authorfullhashraw}{720b274ed25386a0d16ca989c3202315}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The Web promises to make more scientific articles more easily available. However, scientific literature on the Web remains remarkably disorganized. One way to improve this is through citation indexing. Autonomous citation index (ACI) completely automates the citation indexing process without requiring any extra effort from authors or institutions. In addition, ACI improves on other technologies by extracting and making the context of citation easy to access.}
@@ -640,6 +719,43 @@
       \verb 10.1109/WAINA.2008.125
       \endverb
     \endentry
+    \entry{transparscit}{thesis}{}{}
+      \name{author}{1}{}{%
+        {{hash=97c323d718ed070fc2f5ba8ce43c71c1}{%
+           family={Uddin},
+           familyi={U\bibinitperiod},
+           given={Mohammad\bibnamedelima Shahrear},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Old Dominion University}%
+      }
+      \list{location}{1}{%
+        {Norfolk, Virginia, USA}%
+      }
+      \strng{namehash}{97c323d718ed070fc2f5ba8ce43c71c1}
+      \strng{fullhash}{97c323d718ed070fc2f5ba8ce43c71c1}
+      \strng{fullhashraw}{97c323d718ed070fc2f5ba8ce43c71c1}
+      \strng{bibnamehash}{97c323d718ed070fc2f5ba8ce43c71c1}
+      \strng{authorbibnamehash}{97c323d718ed070fc2f5ba8ce43c71c1}
+      \strng{authornamehash}{97c323d718ed070fc2f5ba8ce43c71c1}
+      \strng{authorfullhash}{97c323d718ed070fc2f5ba8ce43c71c1}
+      \strng{authorfullhashraw}{97c323d718ed070fc2f5ba8ce43c71c1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{ODU Master's Theses, Paper 133}
+      \field{title}{{TransParsCit: A Transformer-Based Citation Parser Trained on Large-Scale Synthesized Data}}
+      \field{type}{Master's Thesis}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb https://digitalcommons.odu.edu/computerscience_etds/133/
+      \endverb
+      \verb{url}
+      \verb https://digitalcommons.odu.edu/computerscience_etds/133/
+      \endverb
+    \endentry
     \entry{contrastive}{article}{}{}
       \name{author}{2}{}{%
         {{hash=6002859a943cf32476bcddbe1826ce85}{%
@@ -725,8 +841,8 @@
       \strng{authornamehash}{9ef14008e98ff5ff606906624324f6aa}
       \strng{authorfullhash}{dd6b023f2c10432f02336e26a1a1eb7e}
       \strng{authorfullhashraw}{dd6b023f2c10432f02336e26a1a1eb7e}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{In the realm of digital libraries, efficiently managing and accessing scientific publications necessitates automated bibliographic reference segmentation. This study addresses the challenge of accurately segmenting bibliographic references, a task complicated by the varied formats and styles of references. Focusing on the empirical evaluation of Conditional Random Fields (CRF), Bidirectional Long Short-Term Memory with CRF (BiLSTM + CRF), and Transformer Encoder with CRF (Transformer + CRF) architectures, this research employs Byte Pair Encoding and Character Embeddings for vector representation. The models underwent training on the extensive Giant corpus and subsequent evaluation on the Cora Corpus to ensure a balanced and rigorous comparison, maintaining uniformity across embedding layers, normalization techniques, and Dropout strategies. Results indicate that the BiLSTM + CRF architecture outperforms its counterparts by adeptly handling the syntactic structures prevalent in bibliographic data, achieving an F1-Score of 0.96. This outcome highlights the necessity of aligning model architecture with the specific syntactic demands of bibliographic reference segmentation tasks. Consequently, the study establishes the BiLSTM + CRF model as a superior approach within the current state-of-the-art, offering a robust solution for the challenges faced in digital library management and scholarly communication.}
@@ -745,85 +861,6 @@
       \verb{url}
       \verb https://www.mdpi.com/2306-5729/9/5/71
       \endverb
-    \endentry
-    \entry{giant}{inproceedings}{}{}
-      \name{author}{4}{}{%
-        {{hash=64291e6c3072447e603f8b92e7cd9ab0}{%
-           family={Grennan},
-           familyi={G\bibinitperiod},
-           given={Mark},
-           giveni={M\bibinitperiod}}}%
-        {{hash=f313b61bb0969bd42fd683954ff5ec69}{%
-           family={Schibel},
-           familyi={S\bibinitperiod},
-           given={Martin},
-           giveni={M\bibinitperiod}}}%
-        {{hash=dbd31d05c6facdb22147b6f9c0231b01}{%
-           family={Collins},
-           familyi={C\bibinitperiod},
-           given={Andrew},
-           giveni={A\bibinitperiod}}}%
-        {{hash=2e33a4017ed8565e1d62adbc946d27fd}{%
-           family={Beel},
-           familyi={B\bibinitperiod},
-           given={Joeran},
-           giveni={J\bibinitperiod}}}%
-      }
-      \name{editor}{4}{}{%
-        {{hash=979b59e5a8896c7415444f052a100583}{%
-           family={Curry},
-           familyi={C\bibinitperiod},
-           given={Edward},
-           giveni={E\bibinitperiod}}}%
-        {{hash=354197578c9e4fbb7d0b1fc263f4622e}{%
-           family={Keane},
-           familyi={K\bibinitperiod},
-           given={Mark\bibnamedelima T.},
-           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
-        {{hash=de0cda1ceb90bc805c9b0df1911180df}{%
-           family={Ojo},
-           familyi={O\bibinitperiod},
-           given={Adegboyega},
-           giveni={A\bibinitperiod}}}%
-        {{hash=bd8ac36c8ef2df60dc19ffed7662e488}{%
-           family={Salwala},
-           familyi={S\bibinitperiod},
-           given={Dhaval},
-           giveni={D\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {CEUR-WS.org}%
-      }
-      \strng{namehash}{ab0ff1fb6885380214fa186ba4fb8d8d}
-      \strng{fullhash}{df2149197f38ebee7aeaa076936ba9d6}
-      \strng{fullhashraw}{df2149197f38ebee7aeaa076936ba9d6}
-      \strng{bibnamehash}{ab0ff1fb6885380214fa186ba4fb8d8d}
-      \strng{authorbibnamehash}{ab0ff1fb6885380214fa186ba4fb8d8d}
-      \strng{authornamehash}{ab0ff1fb6885380214fa186ba4fb8d8d}
-      \strng{authorfullhash}{df2149197f38ebee7aeaa076936ba9d6}
-      \strng{authorfullhashraw}{df2149197f38ebee7aeaa076936ba9d6}
-      \strng{editorbibnamehash}{b09c3686f37cf64dcfe5f747d111d639}
-      \strng{editornamehash}{b09c3686f37cf64dcfe5f747d111d639}
-      \strng{editorfullhash}{61d64388287d78e394b5676e28edc6f5}
-      \strng{editorfullhashraw}{61d64388287d78e394b5676e28edc6f5}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{AICS}
-      \field{series}{CEUR Workshop Proceedings}
-      \field{title}{GIANT: The 1-Billion Annotated Synthetic Bibliographic-Reference-String Dataset for Deep Citation Parsing.}
-      \field{volume}{2563}
-      \field{year}{2019}
-      \field{pages}{260\bibrangedash 271}
-      \range{pages}{12}
-      \verb{urlraw}
-      \verb http://dblp.uni-trier.de/db/conf/aics/aics2019.html#GrennanSCB19
-      \endverb
-      \verb{url}
-      \verb http://dblp.uni-trier.de/db/conf/aics/aics2019.html#GrennanSCB19
-      \endverb
-      \keyw{dblp}
     \endentry
     \entry{ParsRec}{inproceedings}{}{}
       \name{author}{4}{}{%
@@ -857,8 +894,8 @@
       \strng{authorfullhash}{a508cac0969dd79cf60eff2f769ee2b7}
       \strng{authorfullhashraw}{a508cac0969dd79cf60eff2f769ee2b7}
       \field{extraname}{3}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{26th Irish Conference on Artificial Intelligence and Cognitive Science (AICS)}
@@ -1150,8 +1187,8 @@
       \strng{editornamehash}{e2187b98613360816f323b4969a45b54}
       \strng{editorfullhash}{e2187b98613360816f323b4969a45b54}
       \strng{editorfullhashraw}{e2187b98613360816f323b4969a45b54}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing ({EMNLP})}
@@ -1228,8 +1265,8 @@
       \strng{editornamehash}{9b31c8484f0880b6cb6055d24b6f656d}
       \strng{editorfullhash}{9b31c8484f0880b6cb6055d24b6f656d}
       \strng{editorfullhashraw}{9b31c8484f0880b6cb6055d24b6f656d}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Continuous word representations, trained on large unlabeled corpora are useful for many natural language processing tasks. Popular models that learn such representations ignore the morphology of words, by assigning a distinct vector to each word. This is a limitation, especially for languages with large vocabularies and many rare words. In this paper, we propose a new approach based on the skipgram model, where each word is represented as a bag of character n-grams. A vector representation is associated to each character n-gram; words being represented as the sum of these representations. Our method is fast, allowing to train models on large corpora quickly and allows us to compute word representations for words that did not appear in the training data. We evaluate our word representations on nine different languages, both on word similarity and analogy tasks. By comparing to recently proposed morphological word representations, we show that our vectors achieve state-of-the-art performance on these tasks.}
@@ -1283,8 +1320,8 @@
       \strng{authornamehash}{ca3baa5a22057195db1c71be39b4c922}
       \strng{authorfullhash}{fbc85d06f02fc1534a6ba28d0d6e5c89}
       \strng{authorfullhashraw}{fbc85d06f02fc1534a6ba28d0d6e5c89}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Improving Language Understanding by Generative Pre-Training}
@@ -1722,11 +1759,11 @@
       \strng{authornamehash}{eb449b11b5bab6b160a02b3481e7c83c}
       \strng{authorfullhash}{6a515c442f9f00a27f229f8bf34ad06f}
       \strng{authorfullhashraw}{6a515c442f9f00a27f229f8bf34ad06f}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://getlinq.com/blog/linq-embed-mistral}}
+      \field{howpublished}{\url{https://huggingface.co/Linq-AI-Research/Linq-Embed-Mistral}}
       \field{note}{Linq AI Research Blog}
       \field{title}{Linq-Embed-Mistral: Elevating Text Retrieval with Improved GPT Data Through Task-Specific Control and Quality Refinement}
       \field{year}{2024}
@@ -1763,8 +1800,8 @@
       \strng{authorfullhash}{dc0afc633047d6fca100f460cf89f831}
       \strng{authorfullhashraw}{dc0afc633047d6fca100f460cf89f831}
       \field{extraname}{1}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{ArXiv}
@@ -1807,8 +1844,8 @@
       \strng{authorfullhash}{dc0afc633047d6fca100f460cf89f831}
       \strng{authorfullhashraw}{dc0afc633047d6fca100f460cf89f831}
       \field{extraname}{2}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://huggingface.co/distilbert/distilbert-base-multilingual-cased}}
@@ -1940,8 +1977,8 @@
       \strng{authornamehash}{2f75424f8afa62a5d143e289d08f1665}
       \strng{authorfullhash}{2f75424f8afa62a5d143e289d08f1665}
       \strng{authorfullhashraw}{2f75424f8afa62a5d143e289d08f1665}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{ArXiv}
